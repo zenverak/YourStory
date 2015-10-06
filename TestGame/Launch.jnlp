@@ -1,0 +1,24 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.5+" codebase="https://acmhbuiisa1.noblehosted.com:443/NobleOpenCTI_new/common" href='Launch.aspx?sid=2nxbqgha2mqj4qszejouoo0z&amp;srv=&amp;port=30330' >
+	<information>
+		<title>Session Client</title>
+		<vendor>Noble Systems Corporation</vendor>
+		<homepage href="http://www.noblesys.com"/>
+		<icon href="img/NobleSplash.jpg" kind="splash"/>
+		<description></description>
+	</information>
+	<resources>
+		<j2se version="1.5+" href="http://java.sun.com/products/autodl/j2se"/ max-heap-size="256m" />
+		<jar href="../lib/jws.jar" />
+	</resources>
+	<application-desc main-class="com.noble.composer.SessionClient" >
+		<argument>acmhbuiisa1.noblehosted.com</argument>
+		<argument>13999</argument>
+		<argument>2nxbqgha2mqj4qszejouoo0z</argument>
+		<argument>0</argument>
+	</application-desc>
+	<security>
+		<all-permissions/>
+	</security>
+</jnlp>
