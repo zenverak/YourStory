@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" backgroundcolor="#00aaff" nextobjectid="13">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" backgroundcolor="#00aaff" nextobjectid="14">
  <tileset firstgid="1" name="Boy" tilewidth="32" tileheight="32" tilecount="6">
   <image source="../img/sprite/Boy.png" width="192" height="32"/>
  </tileset>
@@ -26,6 +26,12 @@
    <properties>
     <property name="framewidth" value="32"/>
     <property name="image" value="spinning_coin_gold"/>
+   </properties>
+  </object>
+  <object id="13" name="CoinEntity2" x="573" y="385" width="36" height="28">
+   <properties>
+    <property name="framewidth" value="32"/>
+    <property name="image" value="spinning_gold_coin"/>
    </properties>
   </object>
  </objectgroup>
