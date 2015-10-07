@@ -19,8 +19,11 @@ game.PlayerEntity = me.Entity.extend({
         this.renderable.addAnimation("walk", [0, 1, 2, 3, 4, 5]);
         // define a standing animation (using the first frame)
         this.renderable.addAnimation("stand", [0]);
+		//Coin animation
+		this.renderable.addAnimation("spin",[0,1,2,3,4,5,6,7]);
         // set the standing animation as default
         this.renderable.setCurrentAnimation("stand");
+	
 
     },
 
@@ -33,7 +36,7 @@ game.PlayerEntity = me.Entity.extend({
             // flip the sprite on horizontal axis
             this.renderable.flipX(true);
             // update the entity velocity
-            this.body.vel.x‐ = this.body.accel.x * me.timer.tick;
+            this.body.vel.x -= this.body.accel.x * me.timer.tick;
             // change to the walking animation
             if (!this.renderable.isCurrentAnimation("walk")) {
                 this.renderable.setCurrentAnimation("walk");
@@ -58,7 +61,7 @@ game.PlayerEntity = me.Entity.extend({
             if (!this.body.jumping && !this.body.falling) {
                 // set current vel to the maximum defined value
                 // gravity will then do the rest
-                this.body.vel.y = ‐this.body.maxVel.y * me.timer.tick;
+                this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
                 // set the jumping flag
                 this.body.jumping = true;
             }

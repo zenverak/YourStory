@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" nextobjectid="19">
- <tileset firstgid="1" name="area01_level_tiles" tilewidth="32" tileheight="32" tilecount="140">
-  <image source="../img/map/area01_level_tiles.png" width="640" height="241"/>
- </tileset>
- <tileset firstgid="141" name="Boy" tilewidth="32" tileheight="32" tilecount="6">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" nextobjectid="6">
+ <tileset firstgid="1" name="Boy" tilewidth="32" tileheight="32" tilecount="6">
   <image source="../img/sprite/Boy.png" width="192" height="32"/>
  </tileset>
- <layer name="background" width="20" height="15">
-  <data encoding="base64" compression="zlib">
-   eJzjYGBg4ABiXQbKgA7UHEYKzUEH1DZPG4i1qGieJBSPmkeZeYw4MLXNI9V8mHmgNKONhMkFILM40DAleY9QXIgzoLqbEJYCYjso1mLA9DcIM5OA2aiMAdRuB4A=
-  </data>
- </layer>
- <layer name="foreground" width="20" height="15">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUEAKCVDZPlcrmjRQAAEvQADc=
+ <tileset firstgid="7" name="area01_level_tiles" tilewidth="32" tileheight="32" tilecount="140">
+  <image source="../img/map/area01_level_tiles.png" width="640" height="241"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="15">
+  <data encoding="base64">
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAADEAAAAxAAAACwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAAAACQAAAAkAAAAfAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4AAAAJAAAACQAAAB8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxAAAAMQAAADEAAAAxAAAAMQAAADEAAAAxAAAAMQAAADEAAAAxAAAAMQAAADEAAAAxAAAAMQAAADEAAAAxAAAAMQAAADEAAAAxAAAAMQAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAA
   </data>
  </layer>
  <objectgroup name="Object Layer 1">
-  <object id="6" name="boy" x="98" y="258" width="31" height="57">
+  <object id="1" name="boy" x="35" y="380" width="32" height="40">
    <properties>
     <property name="framewidth" value="64"/>
-    <property name="image" value="Boy"/>
+    <property name="image" value="boy"/>
+    <property name="offset" value="0"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup name="collision">
-  <object id="11" x="289" y="391" width="352" height="89"/>
-  <object id="13" x="2" y="419" width="286" height="60"/>
-  <object id="14" x="3" y="95" width="54" height="285"/>
-  <object id="15" x="0" y="380" width="30" height="42"/>
-  <object id="16" x="64" y="323" width="126" height="57"/>
+  <object id="3" x="1" y="418" width="640" height="61"/>
+  <object id="5" x="229" y="322" width="122" height="94"/>
  </objectgroup>
 </map>
