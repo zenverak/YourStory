@@ -19,8 +19,6 @@ game.PlayerEntity = me.Entity.extend({
         this.renderable.addAnimation("walk", [0, 1, 2, 3, 4, 5]);
         // define a standing animation (using the first frame)
         this.renderable.addAnimation("stand", [0]);
-        //Coin animation
-        this.renderable.addAnimation("spin", [0, 1, 2, 3, 4, 5, 6, 7]);
         // set the standing animation as default
         this.renderable.setCurrentAnimation("stand");
 
@@ -122,29 +120,29 @@ game.EnemyEntity = me.Entity.extend({
 
         // adjust the size setting information to match the sprite size
         // so that the entity object is created with the right size
-        settings.framewidth = settings.width = 64;
-        settings.frameheight = settings.height = 64;
+        settings.framewidth = settings.width = 32;
+        settings.frameheight = settings.height = 32;
 
-        // redefine the default shape (used to define path) with a shape matching the renderable
+       // redefine the default shape (used to define path) with a shape matching the renderable
         settings.shapes[0] = new me.Rect(0, 0, settings.framewidth, settings.frameheight);
 
         // call the parent constructor
         this._super(me.Entity, 'init', [x, y, settings]);
 
         // set start/end position based on the initial area size
-        x = this.pos.x;
+        /*x = this.pos.x;
         this.startX = x;
         this.endX = x + width - settings.framewidth
         this.pos.x = x + width - settings.framewidth;
-
+		*/
         // to remember which side we were walking
         this.walkLeft = false;
 
         // walking & jumping speed
-        this.body.setVelocity(4, 6);
+        //this.body.setVelocity(4, 6); 
 
     },
-
+		
     // manage the enemy movement
     update: function(dt) {
 
@@ -164,13 +162,13 @@ game.EnemyEntity = me.Entity.extend({
 
         // update the body movement
         this.body.update(dt);
-
+       
         // handle collisions against other shapes
         me.collision.check(this);
-
+        
         // return true if we moved or if the renderable was updated
         return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
-    },
+    }, 
 
     /**
      * colision handler
