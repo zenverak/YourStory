@@ -20,6 +20,7 @@ game.HUD.Container = me.Container.extend({
         // make sure our object is always draw first
         this.z = Infinity;
 
+
         // give a name
         this.name = "HUD";
 
@@ -44,12 +45,15 @@ game.HUD.ScoreItem = me.Renderable.extend({
 
         // local copy of the global score
         this.score = -1;
+		
+		this.font = new me.BitmapFont("32x32_font", 32);
+		//this.font.set("right");
     },
 
     /**
      * update function
      */
-    update : function () {
+    update : function (dt) {
         // we don't do anything fancy here, so just
         // return true if the score has been updated
         if (this.score !== game.data.score) {
@@ -62,7 +66,8 @@ game.HUD.ScoreItem = me.Renderable.extend({
     /**
      * draw the score
      */
-    draw : function (context) {
+    draw : function (renderer) {
+		this.font.draw(renderer,game.data.score,this.pos.x,this.pos.y);
         // draw it baby !
     }
 

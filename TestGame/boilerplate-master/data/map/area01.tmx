@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" backgroundcolor="#00aaff" nextobjectid="21">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" backgroundcolor="#00aaff" nextobjectid="34">
  <tileset firstgid="1" name="Boy" tilewidth="32" tileheight="32" tilecount="6">
   <image source="../img/sprite/Boy.png" width="192" height="32"/>
  </tileset>
@@ -37,7 +37,7 @@
  </objectgroup>
  <objectgroup name="collision">
   <object id="3" x="1" y="418" width="640" height="61"/>
-  <object id="5" x="229" y="322" width="122" height="94"/>
+  <object id="33" x="228" y="321" width="123" height="25"/>
  </objectgroup>
  <layer name="background" width="20" height="15">
   <data encoding="base64">
@@ -45,7 +45,7 @@
   </data>
  </layer>
  <objectgroup name="EnemyLayer">
-  <object id="12" name="boys" x="385" y="386" width="32" height="32">
+  <object id="12" name="boys" x="385" y="386" width="32" height="42">
    <properties>
     <property name="framewidth" value="32"/>
    </properties>

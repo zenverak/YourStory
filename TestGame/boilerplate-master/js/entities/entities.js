@@ -98,6 +98,7 @@ game.CoinEntity = me.CollectableEntity.extend({
         // make sure it cannot be collected "again"
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         // remove it
+		game.data.score+=1;
         me.game.world.removeChild(this);
         return false
     }
@@ -180,6 +181,7 @@ game.EnemyEntity = me.Entity.extend({
             // which mean at top position for this one
             if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
                 this.renderable.flicker(750);
+				game.data.score=0;
             }
             return false;
         }
