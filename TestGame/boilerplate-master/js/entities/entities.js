@@ -180,13 +180,19 @@ game.EnemyEntity = me.Entity.extend({
             if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
                 this.renderable.flicker(750);
                 game.data.score = 0;
+
+                //find out which story level I am on
+                var story_count = game.data.story_count;
+
                 //find out which level the game is at
-                level = game.data.l_count;
+                var level = game.data.level_count;
 
                 //find out which sublevel the game is at
 
                 sub_level = game.data.sub_l_count;
-                s_len = game.data.level[level].length
+                s_len = game.data.level[story_count][level].length
+
+
 
                 //we need to make sure that if sub_level count+1> number of levels,
                 //that we then restart our sublevel count
@@ -199,7 +205,7 @@ game.EnemyEntity = me.Entity.extend({
                 }
 
 
-                area = game.data.level[level][sub_level]
+                area = game.data.level[story_count][level][sub_level]
                 me.levelDirector.loadLevel(area);
                 me.game.viewport.fadeOut("#000000", 250);
 
@@ -223,7 +229,12 @@ game.LevelChangeEntity = me.LevelEntity.extend({
         game.data.total_score += game.data.score;
         game.data.score = 0;
         game.data.sub_l_count = 0;
-        game.data.l_count += 1;
+        game.data.level_count += 1;
+        //see if I need to increment the story_count
+		
+		game.data.story_count+=this.s_plus;
+
+
 
     }
 

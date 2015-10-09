@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" backgroundcolor="#00aaff" nextobjectid="40">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" backgroundcolor="#00aaff" nextobjectid="41">
  <tileset firstgid="1" name="Boy" tilewidth="32" tileheight="32" tilecount="6">
   <image source="../img/sprite/Boy.png" width="192" height="32"/>
  </tileset>
@@ -38,6 +38,7 @@
    <properties>
     <property name="duration" value="250"/>
     <property name="fade" value="#000000"/>
+    <property name="s_plus" value="1"/>
     <property name="to" value="area02"/>
    </properties>
   </object>
