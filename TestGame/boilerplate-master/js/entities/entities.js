@@ -98,7 +98,7 @@ game.CoinEntity = me.CollectableEntity.extend({
         // make sure it cannot be collected "again"
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
         // remove it
-		game.data.score+=1;
+        game.data.score += 1;
         me.game.world.removeChild(this);
         return false
     }
@@ -180,26 +180,26 @@ game.EnemyEntity = me.Entity.extend({
             if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
                 this.renderable.flicker(750);
                 game.data.score = 0;
-				//find out which level the game is at
-				level=game.data.l_count;
-				
-				//find out which sublevel the game is at
-				
-				sub_level=game.data.sub_l_count;
-				s_len=game.data.level[level].length
-				
-				//we need to make sure that if sub_level count+1> number of levels,
-				//that we then restart our sublevel count
-				if(s_len<=sub_level+1){
-					game.data.sub_l_count=0;
-					sub_level=0;
-				}else{
-					game.data.sub_l_count+=1;
-					sub_level=game.data.sub_l_count;
-				}
-				
+                //find out which level the game is at
+                level = game.data.l_count;
 
-				area=game.data.level[level][sub_level]
+                //find out which sublevel the game is at
+
+                sub_level = game.data.sub_l_count;
+                s_len = game.data.level[level].length
+
+                //we need to make sure that if sub_level count+1> number of levels,
+                //that we then restart our sublevel count
+                if (s_len <= sub_level + 1) {
+                    game.data.sub_l_count = 0;
+                    sub_level = 0;
+                } else {
+                    game.data.sub_l_count += 1;
+                    sub_level = game.data.sub_l_count;
+                }
+
+
+                area = game.data.level[level][sub_level]
                 me.levelDirector.loadLevel(area);
                 me.game.viewport.fadeOut("#000000", 250);
 
@@ -222,8 +222,8 @@ game.LevelChangeEntity = me.LevelEntity.extend({
         me.game.viewport.fadeOut(this.fade, this.duration);
         game.data.total_score += game.data.score;
         game.data.score = 0;
-		game.data.sub_l_count=0;
-		game.data.l_count+=1;
+        game.data.sub_l_count = 0;
+        game.data.l_count += 1;
 
     }
 
