@@ -47,7 +47,7 @@ game.HUD.ScoreItem = me.Renderable.extend({
         this.score = -1;
 		
 		this.font = new me.BitmapFont("32x32_font", 32);
-		//this.font.set("right");
+
     },
 
     /**

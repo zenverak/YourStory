@@ -104,9 +104,7 @@ game.CoinEntity = me.CollectableEntity.extend({
     }
 });
 
-/* 
-an enemy Entity
- */
+
 /* --------------------------
 an enemy Entity
 ------------------------ */
@@ -182,6 +180,7 @@ game.EnemyEntity = me.Entity.extend({
             if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
                 this.renderable.flicker(750);
 				game.data.score=0;
+
             }
             return false;
         }
