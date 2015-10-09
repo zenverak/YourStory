@@ -222,6 +222,8 @@ game.LevelChangeEntity = me.LevelEntity.extend({
         me.game.viewport.fadeOut(this.fade, this.duration);
         game.data.total_score += game.data.score;
         game.data.score = 0;
+		game.data.sub_l_count=0;
+		game.data.l_count+=1;
 
     }
 
