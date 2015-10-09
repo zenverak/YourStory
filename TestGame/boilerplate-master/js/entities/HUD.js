@@ -67,7 +67,8 @@ game.HUD.ScoreItem = me.Renderable.extend({
      * draw the score
      */
     draw : function (renderer) {
-		this.font.draw(renderer,game.data.score,this.pos.x,this.pos.y);
+		var score="S"+"c"+"o"+"r"+"e"+": " + game.data.score;
+		this.font.draw(renderer,score,this.pos.x,this.pos.y);
         // draw it baby !
     }
 

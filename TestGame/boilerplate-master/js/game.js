@@ -5,26 +5,20 @@ var game = {
     data: {
         // score
         score: 0,
+		total_score: 0,
 		
 		//This is the count of level that will be used to determine which leve they are at
-        l_count: 1,
+        l_count: 2,
 		// Will use this to determine which sub level should be loaded.
         sub_l_count: 0,
         level: {
-            1: {
-                "collect": "area00"
-            },
+            1: ["area00"],
 
-            2: {
-                "jumping": {
-                    0: "area01",
-                    1: "area02",
-                    2: "area03",
-                    3: "area04"
-                }
+            2: ["area01","area02","area03","area04"]
+
             }
 
-        }
+        
 
     },
 
@@ -71,6 +65,7 @@ var game = {
         me.pool.register("CoinEntity", game.CoinEntity);
         me.pool.register("CoinEntity2", game.CoinEntity);
         me.pool.register("boys", game.EnemyEntity);
+		me.pool.register("move1",game.LevelChangeEntity);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");

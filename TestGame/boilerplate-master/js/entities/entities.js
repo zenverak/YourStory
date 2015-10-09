@@ -122,7 +122,7 @@ game.EnemyEntity = me.Entity.extend({
         settings.framewidth = settings.width = 32;
         settings.frameheight = settings.height = 32;
 
-       // redefine the default shape (used to define path) with a shape matching the renderable
+        // redefine the default shape (used to define path) with a shape matching the renderable
         settings.shapes[0] = new me.Rect(0, 0, settings.framewidth, settings.frameheight);
 
         // call the parent constructor
@@ -141,7 +141,7 @@ game.EnemyEntity = me.Entity.extend({
         //this.body.setVelocity(4, 6); 
 
     },
-		
+
     // manage the enemy movement
     update: function(dt) {
 
@@ -161,13 +161,13 @@ game.EnemyEntity = me.Entity.extend({
 
         // update the body movement
         this.body.update(dt);
-       
+
         // handle collisions against other shapes
         me.collision.check(this);
-        
+
         // return true if we moved or if the renderable was updated
         return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
-    }, 
+    },
 
     /**
      * colision handler
@@ -179,7 +179,29 @@ game.EnemyEntity = me.Entity.extend({
             // which mean at top position for this one
             if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
                 this.renderable.flicker(750);
-				game.data.score=0;
+                game.data.score = 0;
+				//find out which level the game is at
+				level=game.data.l_count;
+				
+				//find out which sublevel the game is at
+				
+				sub_level=game.data.sub_l_count;
+				s_len=game.data.level[level].length
+				
+				//we need to make sure that if sub_level count+1> number of levels,
+				//that we then restart our sublevel count
+				if(s_len<=sub_level+1){
+					game.data.sub_l_count=0;
+					sub_level=0;
+				}else{
+					game.data.sub_l_count+=1;
+					sub_level=game.data.sub_l_count;
+				}
+				
+
+				area=game.data.level[level][sub_level]
+                me.levelDirector.loadLevel(area);
+                me.game.viewport.fadeOut("#000000", 250);
 
             }
             return false;
@@ -187,4 +209,20 @@ game.EnemyEntity = me.Entity.extend({
         // Make all other objects solid
         return true;
     }
+});
+
+game.LevelChangeEntity = me.LevelEntity.extend({
+    init: function(x, y, settings) {
+        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this.settings = settings;
+    },
+
+    onFadeComplete: function() {
+        me.levelDirector.loadLevel(this.gotolevel);
+        me.game.viewport.fadeOut(this.fade, this.duration);
+        game.data.total_score += game.data.score;
+        game.data.score = 0;
+
+    }
+
 });
