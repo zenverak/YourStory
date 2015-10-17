@@ -25,7 +25,7 @@ var game = {
             // jumping story
             2: {
 				//School setting
-                1: ["area01", "area02", "area03", "area04"],
+                1: ["story_jump_1_1"],
 				//home setting
 				2: [],
 				//other
@@ -80,12 +80,9 @@ var game = {
 
         // add our player entity in the entity pool
         me.pool.register("boy", game.PlayerEntity);
-        me.pool.register("CoinEntity", game.CoinEntity);
-        me.pool.register("CoinEntity2", game.CoinEntity);
         me.pool.register("boys", game.EnemyEntity);
         me.pool.register("move1", game.LevelChangeEntity);
 		me.pool.register("coin1_1_1", game.CoinEntity);
-		me.pool.register("silly",game.EnemyEntity);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");
