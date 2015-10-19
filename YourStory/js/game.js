@@ -37,7 +37,6 @@ var game = {
 
 
 
-
     },
 
 
@@ -83,11 +82,12 @@ var game = {
         me.pool.register("boys", game.EnemyEntity);
         me.pool.register("move1", game.LevelChangeEntity);
 		me.pool.register("coin1_1_1", game.CoinEntity);
+		me.pool.register("tramp", game.TrampEntity);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");
         me.input.bindKey(me.input.KEY.RIGHT, "right");
-        me.input.bindKey(me.input.KEY.X, "jump", true);
+        me.input.bindKey(me.input.KEY.SPACE, "jump", true);
 
         // Start the game.
         me.state.change(me.state.PLAY);

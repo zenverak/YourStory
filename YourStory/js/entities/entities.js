@@ -9,7 +9,8 @@ game.PlayerEntity = me.Entity.extend({
     init: function(x, y, settings) {
         // call the constructor
         this._super(me.Entity, 'init', [x, y, settings]);
-        this.body.setVelocity(3, 15);
+        this.body.setVelocity(5, 30);
+
 
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 
@@ -24,7 +25,12 @@ game.PlayerEntity = me.Entity.extend({
 
 
     },
+    t: function() {
+        var t;
+        t = 1 + 1;
+        return t;
 
+    },
     /**
      * update the entity
      */
@@ -59,7 +65,7 @@ game.PlayerEntity = me.Entity.extend({
             if (!this.body.jumping && !this.body.falling) {
                 // set current vel to the maximum defined value
                 // gravity will then do the rest
-                this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+                this.body.vel.y = -(this.body.maxVel.y * me.timer.tick) / 2;
                 // set the jumping flag
                 this.body.jumping = true;
             }
@@ -79,7 +85,48 @@ game.PlayerEntity = me.Entity.extend({
      * (called when colliding with other objects)
      */
     onCollision: function(response, other) {
-        // Make all other objects solid
+        switch (other.body.collisionType) {
+            case me.collision.types.WORLD_SHAPE:
+                // Simulate a platform object
+                if (other.type === "platform") {
+                    if (this.body.falling &&
+                        !me.input.isKeyPressed("down") &&
+                        // Shortest overlap would move the player upward
+                        (response.overlapV.y > 0) &&
+                        // The velocity is reasonably fast enough to have penetrated to the overlap depth
+                        (~~this.body.vel.y >= ~~response.overlapV.y)
+                    ) {
+                        // Disable collision on the x axis
+                        response.overlapV.x = 0;
+                        // Repond to the platform (it is solid)
+                        return true;
+                    }
+                    // Do not respond to the platform (pass through)
+                    return false;
+                }
+
+
+                break;
+
+            case me.collision.types.ACTION_OBJECT:
+
+                if ((response.overlapV.y > 0) && this.body.falling) {
+
+                    // spike or any other fixed danger
+                    this.body.vel.y -= this.body.maxVel.y;
+                    this.body.jumping = true;
+
+                    //this.body.vel.y-=this.body.maxVel.y*me.timer.tick;
+                }
+
+                break;
+
+            default:
+                // Do not respond to other objects (e.g. coins)
+                return false;
+        }
+
+        // Make the object solid
         return true;
     }
 });
@@ -111,7 +158,7 @@ an enemy Entity
 game.EnemyEntity = me.Entity.extend({
     init: function(x, y, settings) {
         // define this here instead of tiled
-        settings.image = "Boy";
+        //ettings.image = "Boy";
 
         // save the area size defined in Tiled
         var width = settings.width;
@@ -211,6 +258,10 @@ game.EnemyEntity = me.Entity.extend({
 
             }
             return false;
+
+
+
+
         }
         // Make all other objects solid
         return true;
@@ -224,18 +275,30 @@ game.LevelChangeEntity = me.LevelEntity.extend({
     },
 
     onFadeComplete: function() {
-        me.levelDirector.loadLevel(this.gotolevel);
-        me.game.viewport.fadeOut(this.fade, this.duration);
         game.data.total_score += game.data.score;
         game.data.score = 0;
         game.data.sub_l_count = 0;
         game.data.level_count += 1;
+        game.data.story_count += this.s_plus;
+        game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count]
+        lev = me.levelDirector.loadLevel(this.gotolevel);
+        me.game.viewport.fadeOut(this.fade, this.duration);
+
+
+        //Would only increment the story if I have copmleted all levesl in the story
         //see if I need to increment the story_count
-		
-		game.data.story_count+=this.s_plus;
+
 
 
 
     }
 
+});
+
+game.TrampEntity = me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this.settings = settings;
+        this.body.collisionType = me.collision.types.ACTION_OBJECT;
+    }
 });
