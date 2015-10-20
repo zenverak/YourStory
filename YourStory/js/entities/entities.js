@@ -9,7 +9,7 @@ game.PlayerEntity = me.Entity.extend({
     init: function(x, y, settings) {
         // call the constructor
         this._super(me.Entity, 'init', [x, y, settings]);
-        this.body.setVelocity(5, 30);
+        this.body.setVelocity(15, 30);
 
 
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -25,12 +25,7 @@ game.PlayerEntity = me.Entity.extend({
 
 
     },
-    t: function() {
-        var t;
-        t = 1 + 1;
-        return t;
 
-    },
     /**
      * update the entity
      */
@@ -98,6 +93,7 @@ game.PlayerEntity = me.Entity.extend({
                     ) {
                         // Disable collision on the x axis
                         response.overlapV.x = 0;
+
                         // Repond to the platform (it is solid)
                         return true;
                     }
@@ -105,18 +101,72 @@ game.PlayerEntity = me.Entity.extend({
                     return false;
                 }
 
+                //TEST
+                //return true;
+
+
+                break;
+
+            case me.collision.types.ENEMY_OBJECT:
+
+                // a regular moving enemy entity
+                if ((response.overlapV.y > 0) && this.body.falling) {
+                    // jump
+                    //find out which story level I am on
+                    game.data.score = 0;
+                    var story_count = game.data.story_count;
+
+                    //find out which level the game is at
+                    var level = game.data.level_count;
+
+                    //find out which sublevel the game is at
+
+                    var sub_level = game.data.sub_l_count;
+                    s_len = game.data.level[story_count][level].length;
+
+
+
+                    //we need to make sure that if sub_level count+1> number of levels,
+                    //that we then restart our sublevel count
+                    if (s_len <= sub_level + 1) {
+                        game.data.sub_l_count = 0;
+                        sub_level = 0;
+                    } else {
+                        game.data.sub_l_count += 1;
+                        sub_level = game.data.sub_l_count;
+                    }
+                    game.data.in_box = false;
+
+
+                    area = game.data.level[story_count][level][sub_level]
+                    me.levelDirector.loadLevel(area);
+                    me.game.viewport.fadeOut("#000000", 250);
+                }
+
+                // Not solid
+                return false;
 
                 break;
 
             case me.collision.types.ACTION_OBJECT:
 
-                if ((response.overlapV.y > 0) && this.body.falling) {
+                if ((response.overlapV.y > 0) && this.body.falling && other.type=="tramp") {
 
-                    // spike or any other fixed danger
-                    this.body.vel.y -= this.body.maxVel.y;
-                    this.body.jumping = true;
+
+                    this.body.vel.y -= this.body.maxVel.y * me.timer.tick;
+
 
                     //this.body.vel.y-=this.body.maxVel.y*me.timer.tick;
+                } else if(other.type=="box"){
+                    response.overlapV.x = 0;
+                    response.overlapV.y = 0;
+                    //put the collected items in the box
+                    if (me.input.isKeyPressed("put")) {
+                        game.data.in_box = true;
+						
+						//PlaySounds
+
+                    }
                 }
 
                 break;
@@ -224,39 +274,7 @@ game.EnemyEntity = me.Entity.extend({
         if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
             // res.y >0 means touched by something on the bottom
             // which mean at top position for this one
-            if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
-                this.renderable.flicker(750);
-                game.data.score = 0;
 
-                //find out which story level I am on
-                var story_count = game.data.story_count;
-
-                //find out which level the game is at
-                var level = game.data.level_count;
-
-                //find out which sublevel the game is at
-
-                sub_level = game.data.sub_l_count;
-                s_len = game.data.level[story_count][level].length;
-
-
-
-                //we need to make sure that if sub_level count+1> number of levels,
-                //that we then restart our sublevel count
-                if (s_len <= sub_level + 1) {
-                    game.data.sub_l_count = 0;
-                    sub_level = 0;
-                } else {
-                    game.data.sub_l_count += 1;
-                    sub_level = game.data.sub_l_count;
-                }
-
-
-                area = game.data.level[story_count][level][sub_level]
-                me.levelDirector.loadLevel(area);
-                me.game.viewport.fadeOut("#000000", 250);
-
-            }
             return false;
 
 
@@ -275,15 +293,29 @@ game.LevelChangeEntity = me.LevelEntity.extend({
     },
 
     onFadeComplete: function() {
-        game.data.total_score += game.data.score;
-        game.data.score = 0;
-        game.data.sub_l_count = 0;
-        game.data.level_count += 1;
-        game.data.story_count += this.s_plus;
-        game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count]
-        lev = me.levelDirector.loadLevel(this.gotolevel);
-        me.game.viewport.fadeOut(this.fade, this.duration);
 
+        if (game.data.in_box == true) {
+            game.data.total_score += game.data.score;
+			game.data.in_box = false;
+            game.data.score = 0;
+            game.data.sub_l_count = 0;
+            game.data.level_count += 1;
+            game.data.story_count += this.s_plus;
+            lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count]
+            me.levelDirector.loadLevel(lev);
+            me.game.viewport.fadeOut(this.fade, this.duration);
+
+        } 
+		
+		 /**    game.data.total_score += game.data.score;
+            game.data.score = 0;
+            game.data.sub_l_count = 0;
+            game.data.level_count += 1;
+            game.data.story_count += this.s_plus;
+            lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count]
+            me.levelDirector.loadLevel(lev);
+            me.game.viewport.fadeOut(this.fade, this.duration); **/
+ 
 
         //Would only increment the story if I have copmleted all levesl in the story
         //see if I need to increment the story_count
@@ -296,6 +328,15 @@ game.LevelChangeEntity = me.LevelEntity.extend({
 });
 
 game.TrampEntity = me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this.settings = settings;
+        this.body.collisionType = me.collision.types.ACTION_OBJECT;
+    }
+});
+
+
+game.BoxEntity = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.LevelEntity, 'init', [x, y, settings]);
         this.settings = settings;

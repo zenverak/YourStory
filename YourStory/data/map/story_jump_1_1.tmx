@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="32" tileheight="32" backgroundcolor="#00ffff" nextobjectid="179">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="32" tileheight="32" backgroundcolor="#00ffff" nextobjectid="184">
  <tileset firstgid="1" name="area01_level_tiles" tilewidth="32" tileheight="32" tilecount="140">
   <image source="../img/map/area01_level_tiles.png" width="640" height="241"/>
  </tileset>
@@ -48,7 +48,7 @@
   <object id="104" x="1137" y="543" width="134" height="99"/>
   <object id="105" x="416" y="480" width="39" height="9"/>
   <object id="107" x="1696" y="224" width="194" height="6"/>
-  <object id="108" x="1472" y="445" width="222" height="6"/>
+  <object id="108" x="1472" y="445" width="222" height="34"/>
   <object id="109" x="0" y="162" width="29" height="379"/>
   <object id="110" x="1698" y="412" width="188" height="7"/>
   <object id="111" x="2303" y="449" width="32" height="31"/>
@@ -63,7 +63,7 @@
   <object id="131" x="3296" y="480" width="29" height="6"/>
   <object id="132" x="3326" y="490" height="16"/>
   <object id="133" x="3359" y="516" height="11"/>
-  <object id="134" x="3332" y="512" width="29" height="31"/>
+  <object id="134" x="3332" y="512" width="29" height="5"/>
   <object id="160" x="2334" y="417" width="10" height="38"/>
   <object id="161" x="2346" y="416" width="279" height="6"/>
   <object id="163" x="3518" y="128" width="226" height="7"/>
@@ -71,6 +71,7 @@
   <object id="176" x="448" y="426" width="7" height="51"/>
   <object id="177" x="3742" y="286" width="212" height="11"/>
   <object id="178" x="4379" y="288" width="135" height="9"/>
+  <object id="179" x="4792" y="478" width="11" height="63"/>
  </objectgroup>
  <objectgroup name="player">
   <object id="116" name="boy" x="34" y="513" width="30" height="31">
@@ -229,8 +230,16 @@
     <property name="image" value="spinning_coin_gold"/>
    </properties>
   </object>
-  <object id="174" name="tramp" x="1388" y="480" width="73" height="7"/>
-  <object id="175" name="tramp" x="3433" y="479" width="73" height="7"/>
+  <object id="174" name="tramp" type="tramp" x="1388" y="480" width="73" height="21"/>
+  <object id="175" name="tramp" type="tramp" x="3433" y="479" width="73" height="7"/>
+  <object id="180" name="box" type="box" x="4616" y="494" width="48" height="47"/>
+  <object id="181" name="move1" x="4748" y="482" width="38" height="59">
+   <properties>
+    <property name="duration" value="250"/>
+    <property name="fade" value="#000000"/>
+    <property name="s_plus" value="0"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="enemy">
   <object id="157" name="boys" x="572" y="385" width="33" height="31">

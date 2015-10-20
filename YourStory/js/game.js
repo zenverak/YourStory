@@ -14,6 +14,8 @@ var game = {
         level_count: 1,
         // Will use this to determine which sub level should be loaded.
         sub_l_count: 0,
+		//This will be for checking if they put their coins in the box before leaving
+		in_box: false,
 		
 		// this will contain the data structure for the levels. at the top is are the stories, 
 		//then the differententiated version of each story, then the altered versoin of each of those levels
@@ -25,7 +27,7 @@ var game = {
             // jumping story
             2: {
 				//School setting
-                1: ["story_jump_1_1"],
+                1: ["story_jump_1_1","story_jump_1_2"],
 				//home setting
 				2: [],
 				//other
@@ -83,11 +85,13 @@ var game = {
         me.pool.register("move1", game.LevelChangeEntity);
 		me.pool.register("coin1_1_1", game.CoinEntity);
 		me.pool.register("tramp", game.TrampEntity);
+		me.pool.register("box",game.BoxEntity);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.SPACE, "jump", true);
+		me.input.bindKey(me.input.KEY.X,"put");
 
         // Start the game.
         me.state.change(me.state.PLAY);
