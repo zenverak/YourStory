@@ -29,7 +29,7 @@ var game = {
 				//School setting
                 1: ["story_jump_1_1","story_jump_1_2"],
 				//home setting
-				2: [],
+				2: ["story_jump_2_1"],
 				//other
 				3: [],
 				//other
@@ -81,7 +81,7 @@ var game = {
 
         // add our player entity in the entity pool
         me.pool.register("boy", game.PlayerEntity);
-        me.pool.register("boys", game.EnemyEntity);
+        me.pool.register("boys", game.EnemyEntity)
         me.pool.register("move1", game.LevelChangeEntity);
 		me.pool.register("coin1_1_1", game.CoinEntity);
 		me.pool.register("tramp", game.TrampEntity);

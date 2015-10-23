@@ -9,7 +9,7 @@ game.PlayerEntity = me.Entity.extend({
     init: function(x, y, settings) {
         // call the constructor
         this._super(me.Entity, 'init', [x, y, settings]);
-        this.body.setVelocity(15, 30);
+        this.body.setVelocity(26, 30);
 
 
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -22,6 +22,8 @@ game.PlayerEntity = me.Entity.extend({
         this.renderable.addAnimation("stand", [0]);
         // set the standing animation as default
         this.renderable.setCurrentAnimation("stand");
+		
+
 
 
     },
@@ -151,7 +153,7 @@ game.PlayerEntity = me.Entity.extend({
             case me.collision.types.ACTION_OBJECT:
 
                 if ((response.overlapV.y > 0) && this.body.falling && other.type=="tramp") {
-
+					
 
                     this.body.vel.y -= this.body.maxVel.y * me.timer.tick;
 
@@ -163,6 +165,8 @@ game.PlayerEntity = me.Entity.extend({
                     //put the collected items in the box
                     if (me.input.isKeyPressed("put")) {
                         game.data.in_box = true;
+						//Make the image change.
+						me.game.world.removeChild(other);
 						
 						//PlaySounds
 
@@ -291,10 +295,9 @@ game.LevelChangeEntity = me.LevelEntity.extend({
         this._super(me.LevelEntity, 'init', [x, y, settings]);
         this.settings = settings;
     },
-
-    onFadeComplete: function() {
-
-        if (game.data.in_box == true) {
+	
+	onCollision: function(){
+	if (game.data.in_box == true) {
             game.data.total_score += game.data.score;
 			game.data.in_box = false;
             game.data.score = 0;
@@ -306,6 +309,11 @@ game.LevelChangeEntity = me.LevelEntity.extend({
             me.game.viewport.fadeOut(this.fade, this.duration);
 
         } 
+	}
+
+    //onFadeComplete: function() {
+
+
 		
 		 /**    game.data.total_score += game.data.score;
             game.data.score = 0;
@@ -320,10 +328,10 @@ game.LevelChangeEntity = me.LevelEntity.extend({
         //Would only increment the story if I have copmleted all levesl in the story
         //see if I need to increment the story_count
 
+		//
 
 
-
-    }
+    //}
 
 });
 
@@ -341,5 +349,9 @@ game.BoxEntity = me.Entity.extend({
         this._super(me.LevelEntity, 'init', [x, y, settings]);
         this.settings = settings;
         this.body.collisionType = me.collision.types.ACTION_OBJECT;
+	//	this.renderable.addAnimation("empty",[0]);
+	//	this.renderable.addAnimation("full",[1]);
+		
+	//	this.renderablel.setCurrentAnimation("empty");
     }
 });
