@@ -7,9 +7,9 @@ game.PlayerEntity = me.Entity.extend({
      * constructor
      */
     init: function(x, y, settings) {
-        // call the constructor
+        // call the construct
         this._super(me.Entity, 'init', [x, y, settings]);
-        this.body.setVelocity(26, 30);
+        this.body.setVelocity(5, 30);
 
 
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -217,7 +217,19 @@ game.EnemyEntity = me.Entity.extend({
         // save the area size defined in Tiled
         var width = settings.width;
         var height = settings.height;
-
+		
+		
+		//get the length of the array that holds the names of the
+		// of the children sprites
+		var kLen=game.data.kids.length;
+		//use this to randomly pick a sprite.
+		//This will save time so that I don't have
+		//to actually manually set a sprite everytime
+		
+		var kid = Math.floor((Math.random() * (kLen-1) ) )
+		settings.image=game.data.kids[kid];
+		
+	
         // adjust the size setting information to match the sprite size
         // so that the entity object is created with the right size
         settings.framewidth = settings.width = 32;
@@ -304,7 +316,8 @@ game.LevelChangeEntity = me.LevelEntity.extend({
             game.data.sub_l_count = 0;
             game.data.level_count += 1;
             game.data.story_count += this.s_plus;
-            lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count]
+            //var lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count];
+			var lev = game.data.level[2][game.data.level_count][game.data.sub_l_count];
             me.levelDirector.loadLevel(lev);
             me.game.viewport.fadeOut(this.fade, this.duration);
 

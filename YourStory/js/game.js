@@ -8,7 +8,7 @@ var game = {
         total_score: 0,
 
         //to track which story we are on
-        story_count : 2,
+        story_count: 2,
 
         //This is the count of level that will be used to determine which leve they are at
         level_count: 1,
@@ -35,7 +35,8 @@ var game = {
 				//other
 				4: []
             }
-        }
+        },
+		kids:["boy1","boy2","boy3","boy4","girl1",""]
 
 
 
