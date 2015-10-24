@@ -98,13 +98,13 @@
     <property name="image" value="boy1"/>
    </properties>
   </object>
-  <object id="159" name="boys" x="798" y="288" width="33" height="31">
+  <object id="159" name="boys" x="829" y="288" width="33" height="31">
    <properties>
     <property name="framewidth" value="32"/>
     <property name="image" value="boy1"/>
    </properties>
   </object>
-  <object id="184" name="boys" x="1214" y="287" width="33" height="31">
+  <object id="184" name="boys" x="1241" y="290" width="33" height="31">
    <properties>
     <property name="framewidth" value="32"/>
     <property name="image" value="boy1"/>
@@ -134,7 +134,7 @@
     <property name="image" value="boy1"/>
    </properties>
   </object>
-  <object id="189" name="boys" x="2016" y="252" width="33" height="31">
+  <object id="189" name="boys" x="2110" y="253" width="33" height="31">
    <properties>
     <property name="framewidth" value="32"/>
     <property name="image" value="boy1"/>
@@ -250,13 +250,13 @@
     <property name="image" value="spinning_coin_gold"/>
    </properties>
   </object>
-  <object id="147" name="coin1_1_1" x="2114" y="256" width="29" height="26">
+  <object id="147" name="coin1_1_1" x="2171" y="227" width="29" height="26">
    <properties>
     <property name="framewidth" value="32"/>
     <property name="image" value="spinning_coin_gold"/>
    </properties>
   </object>
-  <object id="148" name="coin1_1_1" x="2114" y="256" width="29" height="26">
+  <object id="148" name="coin1_1_1" x="2174" y="256" width="29" height="26">
    <properties>
     <property name="framewidth" value="32"/>
     <property name="image" value="spinning_coin_gold"/>
