@@ -45,7 +45,7 @@
     <property name="image" value="Boy"/>
    </properties>
   </object>
-  <object id="6" name="tramp" x="171" y="478" width="74" height="18"/>
+  <object id="6" name="tramp" type="tramp" x="171" y="478" width="74" height="18"/>
  </objectgroup>
  <objectgroup name="Enemy"/>
  <objectgroup name="Collection">
