@@ -36,7 +36,7 @@ var game = {
 				//school setting	
 				3: {"level":["story_jump_3_1"],"intro":"room2"},
 				//school setting
-				4: {"level":[],"intro":""}
+				4: {"level":["story_jump_4_1"],"intro":"room2"}
             }
         },
 		kids:["boy1","boy2","boy3","boy4","girl1","girl2","girl3",""],

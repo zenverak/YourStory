@@ -318,44 +318,26 @@ game.LevelChangeEntity = me.LevelEntity.extend({
 
     onCollision: function() {
         if (game.data.in_box == true) {
-			if (game.data.level_count+1<=4){
-            game.data.total_score += game.data.score;
-            game.data.in_box = false;
-            game.data.score = 0;
-            game.data.sub_l_count = 0;
-            game.data.level_count += 1;
-            game.data.story_count += this.s_plus;
-            //var lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count];
-            var lev = game.data.level[2][game.data.level_count]["intro"];
-            me.levelDirector.loadLevel(lev);
-            me.game.viewport.fadeOut(this.fade, this.duration);
-			>
+            if (game.data.level_count + 1 <= 4) {
+                game.data.total_score += game.data.score;
+                game.data.in_box = false;
+                game.data.score = 0;
+                game.data.sub_l_count = 0;
+                game.data.level_count += 1;
+                game.data.story_count += this.s_plus;
+                //var lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count];
+                var lev = game.data.level[2][game.data.level_count]["intro"];
+                me.levelDirector.loadLevel(lev);
+                me.game.viewport.fadeOut(this.fade, this.duration);
 
+
+            } else {
+                me.levelDirector.loadLevel(game.data.end);
+            }
+            return false;
         }
-        return false;
+
     }
-
-    //onFadeComplete: function() {
-
-
-
-    /**    game.data.total_score += game.data.score;
-            game.data.score = 0;
-            game.data.sub_l_count = 0;
-            game.data.level_count += 1;
-            game.data.story_count += this.s_plus;
-            lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count]
-            me.levelDirector.loadLevel(lev);
-            me.game.viewport.fadeOut(this.fade, this.duration); **/
-
-
-    //Would only increment the story if I have copmleted all levesl in the story
-    //see if I need to increment the story_count
-
-    //
-
-
-    //}
 
 });
 game.DoorEntity = me.LevelEntity.extend({
@@ -365,14 +347,14 @@ game.DoorEntity = me.LevelEntity.extend({
     },
 
     onCollision: function() {
-        
 
-            var lev = game.data.level[2][game.data.level_count]["level"][game.data.sub_l_count];
-            me.levelDirector.loadLevel(lev);
-            me.game.viewport.fadeOut(this.fade, this.duration);
 
-        
-      
+        var lev = game.data.level[2][game.data.level_count]["level"][game.data.sub_l_count];
+        me.levelDirector.loadLevel(lev);
+        me.game.viewport.fadeOut(this.fade, this.duration);
+
+
+
     }
 
 });
@@ -385,20 +367,20 @@ game.TrampEntity = me.Entity.extend({
     }
 });
 
-game.PlayEntity=me.Entity.extend({
+game.PlayEntity = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.LevelEntity, 'init', [x, y, settings]);
         this.settings = settings;
     },
-	onCollision: function(){
-		if(game.data.level_count==1){
-			var story=game.data.stories[game.data.story_count-1];
-			me.audio.play(story);
-		}
-		me.game.world.removeChild(this);
-		return false;
-		//return true;
-	}
+    onCollision: function() {
+        if (game.data.level_count == 1) {
+            var story = game.data.stories[game.data.story_count - 1];
+            me.audio.play(story);
+        }
+        me.game.world.removeChild(this);
+        return false;
+        //return true;
+    }
 });
 
 game.BoxEntity = me.Entity.extend({
