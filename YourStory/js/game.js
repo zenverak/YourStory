@@ -19,24 +19,33 @@ var game = {
 		
 		// this will contain the data structure for the levels. at the top is are the stories, 
 		//then the differententiated version of each story, then the altered versoin of each of those levels
+		
+		//each sublevel should be of type  {"level":[],"intro":""}  where each entry in the "level" 
+		//list is the same level with differently placed objects.
         level: {
 			//collecting story
             1: {
-                1: ["area00"]
+                1: {"level":["story_collect"],"intro":"story_collect"}
             },
             // jumping story
             2: {
-				//School setting
-                1: ["story_jump_1_1","story_jump_1_2"],
+				//home setting	
+                1: {"level":["story_jump_1_1","story_jump_1_2"],"intro":"room1"},
 				//home setting
-				2: ["story_jump_2_1"],
-				//other
-				3: [],
-				//other
-				4: []
+				2: {"level":["story_jump_2_1"],"intro":"room1"},
+				//school setting	
+				3: {"level":["story_jump_3_1"],"intro":"room2"},
+				//school setting
+				4: {"level":[],"intro":""}
             }
         },
-		kids:["boy1","boy2","boy3","boy4","girl1",""]
+		kids:["boy1","boy2","boy3","boy4","girl1","girl2","girl3",""],
+		
+		adult:["woman1","woman2","woman3","woman3","woman4","woman5", ""],
+		
+		stories:["Collect","Jumping"],
+		
+		end:"end"
 
 
 
@@ -82,11 +91,15 @@ var game = {
 
         // add our player entity in the entity pool
         me.pool.register("boy", game.PlayerEntity);
-        me.pool.register("boys", game.EnemyEntity)
+        me.pool.register("boys", game.EnemyEntity);
         me.pool.register("move1", game.LevelChangeEntity);
 		me.pool.register("coin1_1_1", game.CoinEntity);
+		me.pool.register("coin", game.CoinEntity);
 		me.pool.register("tramp", game.TrampEntity);
 		me.pool.register("box",game.BoxEntity);
+		me.pool.register("adult",game.EnemyEntity);
+		me.pool.register("door",game.DoorEntity);
+		me.pool.register("play",game.PlayEntity);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");

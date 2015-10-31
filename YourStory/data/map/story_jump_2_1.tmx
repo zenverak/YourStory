@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="32" tileheight="32" backgroundcolor="#2d4780" nextobjectid="101">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="150" height="20" tilewidth="32" tileheight="32" backgroundcolor="#2d4780" nextobjectid="122">
  <tileset firstgid="1" name="School" tilewidth="32" tileheight="32" tilecount="56">
   <image source="../img/map/School.png" width="1792" height="32"/>
  </tileset>
@@ -34,6 +34,7 @@
     <property name="s_plus" value="0"/>
    </properties>
   </object>
+  <object id="101" x="387" y="510" width="1"/>
  </objectgroup>
  <layer name="Tile Layer 1" width="150" height="20">
   <data encoding="base64">
@@ -252,6 +253,114 @@
  </objectgroup>
  <objectgroup name="enemy">
   <object id="99" name="adult" type="adult" x="379" y="493" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="104" name="adult" type="adult" x="763" y="331" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="105" name="adult" type="adult" x="1049" y="495" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="106" name="adult" type="adult" x="1563" y="427" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="107" name="adult" type="adult" x="1563" y="427" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="108" name="adult" type="adult" x="1662" y="271" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="109" name="adult" type="adult" x="1630" y="494" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="110" name="adult" type="adult" x="2078" y="241" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="111" name="adult" type="adult" x="2073" y="427" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="112" name="adult" type="adult" x="2493" y="496" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="113" name="adult" type="adult" x="2463" y="174" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="114" name="adult" type="adult" x="2903" y="75" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="115" name="adult" type="adult" x="2905" y="498" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="116" name="adult" type="adult" x="3356" y="81" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="117" name="adult" type="adult" x="3355" y="498" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="118" name="adult" type="adult" x="3669" y="493" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="119" name="adult" type="adult" x="3677" y="142" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="120" name="adult" type="adult" x="4319" y="147" width="32" height="47">
+   <properties>
+    <property name="frameheight" value="47"/>
+    <property name="framewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="121" name="adult" type="adult" x="4190" y="80" width="32" height="47">
    <properties>
     <property name="frameheight" value="47"/>
     <property name="framewidth" value="32"/>

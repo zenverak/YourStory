@@ -22,7 +22,7 @@ game.PlayerEntity = me.Entity.extend({
         this.renderable.addAnimation("stand", [0]);
         // set the standing animation as default
         this.renderable.setCurrentAnimation("stand");
-		
+
 
 
 
@@ -152,23 +152,23 @@ game.PlayerEntity = me.Entity.extend({
 
             case me.collision.types.ACTION_OBJECT:
 
-                if ((response.overlapV.y > 0) && this.body.falling && other.type=="tramp") {
-					
+                if ((response.overlapV.y > 0) && this.body.falling && other.type == "tramp") {
+
 
                     this.body.vel.y -= this.body.maxVel.y * me.timer.tick;
 
 
                     //this.body.vel.y-=this.body.maxVel.y*me.timer.tick;
-                } else if(other.type=="box"){
+                } else if (other.type == "box") {
                     response.overlapV.x = 0;
                     response.overlapV.y = 0;
                     //put the collected items in the box
                     if (me.input.isKeyPressed("put")) {
                         game.data.in_box = true;
-						//Make the image change.
-						me.game.world.removeChild(other);
-						
-						//PlaySounds
+                        //Make the image change.
+                        me.game.world.removeChild(other);
+
+                        //PlaySounds
 
                     }
                 }
@@ -217,23 +217,31 @@ game.EnemyEntity = me.Entity.extend({
         // save the area size defined in Tiled
         var width = settings.width;
         var height = settings.height;
-		
-		
-		//get the length of the array that holds the names of the
-		// of the children sprites
-		var kLen=game.data.kids.length;
-		//use this to randomly pick a sprite.
-		//This will save time so that I don't have
-		//to actually manually set a sprite everytime
-		
-		var kid = Math.floor((Math.random() * (kLen-1) ) )
-		settings.image=game.data.kids[kid];
-		
-	
+
+
+
+
+        if (settings.type == "adult") {
+            var aLen = game.data.adult.length;
+            var adult = Math.floor((Math.random() * (aLen - 1)))
+            settings.image = game.data.adult[adult];
+        } else {
+            //get the length of the array that holds the names of the
+            // of the children sprites
+            var kLen = game.data.kids.length;
+            //use this to randomly pick a sprite.
+            //This will save time so that I don't have
+            //to actually manually set a sprite everytime
+
+            var kid = Math.floor((Math.random() * (kLen - 1)))
+            settings.image = game.data.kids[kid];
+        }
+
+
+
         // adjust the size setting information to match the sprite size
         // so that the entity object is created with the right size
-        settings.framewidth = settings.width = 32;
-        settings.frameheight = settings.height = 32;
+
 
         // redefine the default shape (used to define path) with a shape matching the renderable
         settings.shapes[0] = new me.Rect(0, 0, settings.framewidth, settings.frameheight);
@@ -307,28 +315,31 @@ game.LevelChangeEntity = me.LevelEntity.extend({
         this._super(me.LevelEntity, 'init', [x, y, settings]);
         this.settings = settings;
     },
-	
-	onCollision: function(){
-	if (game.data.in_box == true) {
+
+    onCollision: function() {
+        if (game.data.in_box == true) {
+			if (game.data.level_count+1<=4){
             game.data.total_score += game.data.score;
-			game.data.in_box = false;
+            game.data.in_box = false;
             game.data.score = 0;
             game.data.sub_l_count = 0;
             game.data.level_count += 1;
             game.data.story_count += this.s_plus;
             //var lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count];
-			var lev = game.data.level[2][game.data.level_count][game.data.sub_l_count];
+            var lev = game.data.level[2][game.data.level_count]["intro"];
             me.levelDirector.loadLevel(lev);
             me.game.viewport.fadeOut(this.fade, this.duration);
+			>
 
-        } 
-	}
+        }
+        return false;
+    }
 
     //onFadeComplete: function() {
 
 
-		
-		 /**    game.data.total_score += game.data.score;
+
+    /**    game.data.total_score += game.data.score;
             game.data.score = 0;
             game.data.sub_l_count = 0;
             game.data.level_count += 1;
@@ -336,15 +347,33 @@ game.LevelChangeEntity = me.LevelEntity.extend({
             lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count]
             me.levelDirector.loadLevel(lev);
             me.game.viewport.fadeOut(this.fade, this.duration); **/
- 
 
-        //Would only increment the story if I have copmleted all levesl in the story
-        //see if I need to increment the story_count
 
-		//
+    //Would only increment the story if I have copmleted all levesl in the story
+    //see if I need to increment the story_count
+
+    //
 
 
     //}
+
+});
+game.DoorEntity = me.LevelEntity.extend({
+    init: function(x, y, settings) {
+        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this.settings = settings;
+    },
+
+    onCollision: function() {
+        
+
+            var lev = game.data.level[2][game.data.level_count]["level"][game.data.sub_l_count];
+            me.levelDirector.loadLevel(lev);
+            me.game.viewport.fadeOut(this.fade, this.duration);
+
+        
+      
+    }
 
 });
 
@@ -356,15 +385,27 @@ game.TrampEntity = me.Entity.extend({
     }
 });
 
+game.PlayEntity=me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this.settings = settings;
+    },
+	onCollision: function(){
+		if(game.data.level_count==1){
+			var story=game.data.stories[game.data.story_count-1];
+			me.audio.play(story);
+		}
+		me.game.world.removeChild(this);
+		return false;
+		//return true;
+	}
+});
 
 game.BoxEntity = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.LevelEntity, 'init', [x, y, settings]);
         this.settings = settings;
         this.body.collisionType = me.collision.types.ACTION_OBJECT;
-	//	this.renderable.addAnimation("empty",[0]);
-	//	this.renderable.addAnimation("full",[1]);
-		
-	//	this.renderablel.setCurrentAnimation("empty");
+
     }
 });

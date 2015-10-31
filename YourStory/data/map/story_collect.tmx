@@ -41,7 +41,13 @@
     <property name="image" value="b"/>
    </properties>
   </object>
-  <object id="8" name="move1" type="move1" x="1231" y="189" width="30" height="65"/>
+  <object id="8" name="move1" type="move1" x="1231" y="189" width="30" height="65">
+   <properties>
+    <property name="duration" value="5000"/>
+    <property name="fade" value="#000000"/>
+    <property name="s_plus" value="1"/>
+   </properties>
+  </object>
   <object id="9" name="coin" type="coin" x="158" y="224" width="36" height="31">
    <properties>
     <property name="framewidth" value="32"/>
