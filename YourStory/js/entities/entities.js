@@ -124,7 +124,7 @@ game.PlayerEntity = me.Entity.extend({
                     //find out which sublevel the game is at
 
                     var sub_level = game.data.sub_l_count;
-                    s_len = game.data.level[story_count][level].length;
+                    s_len = game.data.level[story_count][level]["level"].length;
 
 
 
@@ -140,7 +140,7 @@ game.PlayerEntity = me.Entity.extend({
                     game.data.in_box = false;
 
 
-                    area = game.data.level[story_count][level][sub_level]
+                    area = game.data.level[story_count][level]["level"][sub_level]
                     me.levelDirector.loadLevel(area);
                     me.game.viewport.fadeOut("#000000", 250);
                 }
@@ -201,7 +201,7 @@ game.CoinEntity = me.CollectableEntity.extend({
         // remove it
         game.data.score += 1;
         me.game.world.removeChild(this);
-        return false
+        return false;
     }
 });
 
@@ -323,8 +323,14 @@ game.LevelChangeEntity = me.LevelEntity.extend({
                 game.data.in_box = false;
                 game.data.score = 0;
                 game.data.sub_l_count = 0;
-                game.data.level_count += 1;
-                game.data.story_count += this.s_plus;
+				if(this.s_plus==1){
+					game.data.level_count=0;
+					game.data.story_count += this.s_plus;
+				}else{
+					game.data.level_count += 1;
+				}
+
+
                 //var lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count];
                 var lev = game.data.level[2][game.data.level_count]["intro"];
                 me.levelDirector.loadLevel(lev);
@@ -336,10 +342,12 @@ game.LevelChangeEntity = me.LevelEntity.extend({
             }
             return false;
         }
+		return false;
 
     }
 
 });
+
 game.DoorEntity = me.LevelEntity.extend({
     init: function(x, y, settings) {
         this._super(me.LevelEntity, 'init', [x, y, settings]);
