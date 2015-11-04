@@ -310,6 +310,7 @@ game.EnemyEntity = me.Entity.extend({
     }
 });
 
+//Use this when you change full levels.
 game.LevelChangeEntity = me.LevelEntity.extend({
     init: function(x, y, settings) {
         this._super(me.LevelEntity, 'init', [x, y, settings]);
@@ -318,36 +319,33 @@ game.LevelChangeEntity = me.LevelEntity.extend({
 
     onCollision: function() {
         if (game.data.in_box == true) {
-            if (game.data.level_count + 1 <= 4) {
+            if (game.data.level_count + 1 <4) {
                 game.data.total_score += game.data.score;
                 game.data.in_box = false;
                 game.data.score = 0;
                 game.data.sub_l_count = 0;
-				if(this.s_plus==1){
-					game.data.level_count=0;
-					game.data.story_count += this.s_plus;
-				}else{
-					game.data.level_count += 1;
-				}
-
-
-                //var lev = game.data.level[game.data.story_count][game.data.level_count][game.data.sub_l_count];
+                if (this.s_plus == 1) {
+                    game.data.level_count = 1;
+                    game.data.story_count += this.s_plus;
+                } else {
+                    game.data.level_count += 1;
+                }
+                //var lev = game.data.level[game.data.story_count][game.data.level_count]["level"][sub_l_count];
                 var lev = game.data.level[2][game.data.level_count]["intro"];
                 me.levelDirector.loadLevel(lev);
                 me.game.viewport.fadeOut(this.fade, this.duration);
-
-
             } else {
                 me.levelDirector.loadLevel(game.data.end);
             }
             return false;
         }
-		return false;
+        return false;
 
     }
 
 });
 
+//Use this when you change from the intro levels to the main levels.
 game.DoorEntity = me.LevelEntity.extend({
     init: function(x, y, settings) {
         this._super(me.LevelEntity, 'init', [x, y, settings]);

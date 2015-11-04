@@ -43,7 +43,7 @@
   </object>
   <object id="8" name="move1" type="move1" x="1231" y="189" width="30" height="65">
    <properties>
-    <property name="duration" value="5000"/>
+    <property name="duration" value="2500"/>
     <property name="fade" value="#000000"/>
     <property name="s_plus" value="1"/>
    </properties>

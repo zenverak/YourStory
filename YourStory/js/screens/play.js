@@ -8,7 +8,8 @@ game.PlayScreen = me.ScreenObject.extend({
 		//load a level
 		var story=game.data.story_count;
 		var level=game.data.level_count;
-		var area=game.data.level[story][level]["intro"];
+		var area=game.data.level[1][level]["intro"];
+		//var area=game.data.level[story][level]["intro"];
 		me.levelDirector.loadLevel(area);
 
         // add our HUD to the game world
