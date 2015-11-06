@@ -8,7 +8,7 @@ var game = {
         total_score: 0,
 
         //to track which story we are on
-        story_count: 2,
+        story_count: 1,
 
         //This is the count of level that will be used to determine which leve they are at
         level_count: 1,
@@ -18,6 +18,8 @@ var game = {
 		story_nums:2,
 		
 		number_mess_ups:0,
+		
+		playing:false,
 		//This will be for checking if they put their coins in the box before leaving
 		in_box: false,
 		

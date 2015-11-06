@@ -392,12 +392,11 @@ game.PlayEntity = me.Entity.extend({
     },
     onCollision: function() {
         if (game.data.level_count == 1) {
+			game.data.playing=true;
             var story = game.data.stories[game.data.story_count - 1];
-            me.state.pause();
             me.audio.play(story, false, function() {
-                me.state.resume();
+				game.data.playing=false;
             });
-
         }
         me.game.world.removeChild(this);
         return false;
