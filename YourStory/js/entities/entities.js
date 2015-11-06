@@ -120,6 +120,10 @@ game.PlayerEntity = me.Entity.extend({
 
                     //find out which level the game is at
                     var level = game.data.level_count;
+                    var hLen = game.data.hurt_sounds.length
+                    var play = Math.floor((Math.random() * (hLen - 1)))
+                    me.audio.play(game.data.hurt_sounds[play]);
+
 
                     //find out which sublevel the game is at
 
@@ -142,7 +146,7 @@ game.PlayerEntity = me.Entity.extend({
 
                     area = game.data.level[story_count][level]["level"][sub_level]
                     me.levelDirector.loadLevel(area);
-                    me.game.viewport.fadeOut("#000000", 1000);
+                    me.game.viewport.fadeOut("#000000", 2000);
                 }
 
                 // Not solid
@@ -198,6 +202,7 @@ game.CoinEntity = me.CollectableEntity.extend({
         // do something when collected
         // make sure it cannot be collected "again"
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+        me.audio.play("cling");
         // remove it
         game.data.score += 1;
         me.game.world.removeChild(this);
@@ -388,7 +393,11 @@ game.PlayEntity = me.Entity.extend({
     onCollision: function() {
         if (game.data.level_count == 1) {
             var story = game.data.stories[game.data.story_count - 1];
-            me.audio.play(story);
+            me.state.pause();
+            me.audio.play(story, false, function() {
+                me.state.resume();
+            });
+
         }
         me.game.world.removeChild(this);
         return false;

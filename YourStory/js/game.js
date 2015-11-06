@@ -34,13 +34,13 @@ var game = {
             // jumping story
             2: {
 				//home setting	
-                1: {"level":["story_jump_1_1","story_jump_1_2"],"intro":"room1"},
+                1: {"level":["story_jump_1_1","story_jump_1_2","story_jump_1_3","story_jump_1_4"],"intro":"room1"},
 				//home setting
-				2: {"level":["story_jump_2_1"],"intro":"room1"},
+				2: {"level":["story_jump_2_1","story_jump_2_2","story_jump_2_3","story_jump_2_4"],"intro":"room1"},
 				//school setting	
-				3: {"level":["story_jump_3_1"],"intro":"room2"},
+				3: {"level":["story_jump_3_1","story_jump_3_2","story_jump_3_3","story_jump_3_4"],"intro":"room2"},
 				//school setting
-				4: {"level":["story_jump_4_1"],"intro":"room2"}
+				4: {"level":["story_jump_4_1","story_jump_4_2","story_jump_4_3","story_jump_4_4"],"intro":"room2"}
             }
         },
 		kids:["boy1","boy2","boy3","boy4","girl1","girl2","girl3",""],
@@ -48,6 +48,8 @@ var game = {
 		adult:["woman1","woman2","woman3","woman3","woman4","woman5", ""],
 		
 		stories:["Collect","Jumping"],
+		
+		hurt_sounds:["oooh","Oh, my",""],
 		
 		end:"end"
 
