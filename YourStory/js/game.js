@@ -14,6 +14,10 @@ var game = {
         level_count: 1,
         // Will use this to determine which sub level should be loaded.
         sub_l_count: 0,
+		
+		story_nums:2,
+		
+		number_mess_ups:0,
 		//This will be for checking if they put their coins in the box before leaving
 		in_box: false,
 		

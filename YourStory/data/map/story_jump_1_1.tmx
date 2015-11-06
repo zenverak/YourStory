@@ -374,7 +374,7 @@
    </properties>
   </object>
   <object id="174" name="tramp" type="tramp" x="1388" y="480" width="73" height="21"/>
-  <object id="175" name="tramp" type="tramp" x="3433" y="479" width="73" height="7"/>
+  <object id="175" name="tramp" type="tramp" x="3433" y="479" width="73" height="22"/>
   <object id="181" name="move1" x="4748" y="482" width="38" height="59">
    <properties>
     <property name="duration" value="250"/>

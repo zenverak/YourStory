@@ -142,7 +142,7 @@ game.PlayerEntity = me.Entity.extend({
 
                     area = game.data.level[story_count][level]["level"][sub_level]
                     me.levelDirector.loadLevel(area);
-                    me.game.viewport.fadeOut("#000000", 250);
+                    me.game.viewport.fadeOut("#000000", 1000);
                 }
 
                 // Not solid
@@ -315,27 +315,34 @@ game.LevelChangeEntity = me.LevelEntity.extend({
     init: function(x, y, settings) {
         this._super(me.LevelEntity, 'init', [x, y, settings]);
         this.settings = settings;
+
     },
 
     onCollision: function() {
+        //need to optimize this at some point.
         if (game.data.in_box == true) {
-            if (game.data.level_count + 1 <4) {
+            var s_plus = this.settings.s_plus
+            var sLen = game.data.level[game.data.story_count][game.data.level_count]["level"].length
+            if (game.data.story_count + s_plus <= game.data.story_nums) {
                 game.data.total_score += game.data.score;
                 game.data.in_box = false;
                 game.data.score = 0;
                 game.data.sub_l_count = 0;
-                if (this.s_plus == 1) {
+                console.log(s_plus);
+                if (s_plus == 1) {
                     game.data.level_count = 1;
-                    game.data.story_count += this.s_plus;
+                    game.data.story_count++;
                 } else {
                     game.data.level_count += 1;
                 }
-                //var lev = game.data.level[game.data.story_count][game.data.level_count]["level"][sub_l_count];
-                var lev = game.data.level[2][game.data.level_count]["intro"];
+
+                var lev = game.data.level[game.data.story_count][game.data.level_count]["intro"];
                 me.levelDirector.loadLevel(lev);
                 me.game.viewport.fadeOut(this.fade, this.duration);
-            } else {
+            } else if (game.data.story_count + s_plus > game.data.story_nums) {
                 me.levelDirector.loadLevel(game.data.end);
+            } else if (game.data.level_count + 1 > 4) {
+
             }
             return false;
         }
@@ -355,7 +362,7 @@ game.DoorEntity = me.LevelEntity.extend({
     onCollision: function() {
 
 
-        var lev = game.data.level[2][game.data.level_count]["level"][game.data.sub_l_count];
+        var lev = game.data.level[game.data.story_count][game.data.level_count]["level"][game.data.sub_l_count];
         me.levelDirector.loadLevel(lev);
         me.game.viewport.fadeOut(this.fade, this.duration);
 

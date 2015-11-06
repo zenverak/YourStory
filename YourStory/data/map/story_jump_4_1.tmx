@@ -31,9 +31,9 @@
  <objectgroup name="door">
   <object id="4" name="move1" type="move1" x="4752" y="473" width="30" height="71">
    <properties>
-    <property name="duration" value="250"/>
+    <property name="duration" value="1000"/>
     <property name="fade" value="#000000"/>
-    <property name="s_plus" value="0"/>
+    <property name="s_plus" value="1"/>
    </properties>
   </object>
   <object id="5" name="box" type="box" x="4576" y="446" width="79" height="97">
