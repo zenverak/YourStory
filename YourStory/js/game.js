@@ -20,8 +20,12 @@ var game = {
 		number_mess_ups:0,
 		
 		playing:false,
+		
+		playing_num:0,
 		//This will be for checking if they put their coins in the box before leaving
 		in_box: false,
+		
+		single: false,
 		
 		// this will contain the data structure for the levels. at the top is are the stories, 
 		//then the differententiated version of each story, then the altered versoin of each of those levels
@@ -108,6 +112,7 @@ var game = {
 		me.pool.register("adult",game.EnemyEntity);
 		me.pool.register("door",game.DoorEntity);
 		me.pool.register("play",game.PlayEntity);
+		me.pool.register("move2",game.LevelChangeEntity2);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");

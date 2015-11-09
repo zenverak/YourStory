@@ -351,12 +351,55 @@ game.LevelChangeEntity = me.LevelEntity.extend({
             }
             return false;
         }
+
         return false;
 
     }
 
 });
 
+game.LevelChangeEntity2 = me.LevelEntity.extend({
+    init: function(x, y, settings) {
+        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this.settings = settings;
+
+    },
+
+    onCollision: function() {
+        //need to optimize this at some point.
+		//This is for the starting stage with no real intro.
+		if(game.data.playing==false && game.data.playing_num==1&&game.data.in_box==true){
+			var s_plus = this.settings.s_plus
+            var sLen = game.data.level[game.data.story_count][game.data.level_count]["level"].length
+			game.data.playing_num=0;
+            if (game.data.story_count + s_plus <= game.data.story_nums) {
+                game.data.total_score += game.data.score;
+                game.data.in_box = false;
+                game.data.score = 0;
+                game.data.sub_l_count = 0;
+                if (s_plus == 1) {
+                    game.data.level_count = 1;
+                    game.data.story_count++;
+                } else {
+                    game.data.level_count += 1;
+                }
+
+                var lev = game.data.level[game.data.story_count][game.data.level_count]["intro"];
+                me.levelDirector.loadLevel(lev);
+                me.game.viewport.fadeOut(this.fade, this.duration);
+            } else if (game.data.story_count + s_plus > game.data.story_nums) {
+                me.levelDirector.loadLevel(game.data.end);
+            } else if (game.data.level_count + 1 > 4) {
+
+            }
+            return false;
+		}
+
+        return false;
+
+    }
+
+});
 //Use this when you change from the intro levels to the main levels.
 game.DoorEntity = me.LevelEntity.extend({
     init: function(x, y, settings) {
@@ -366,16 +409,20 @@ game.DoorEntity = me.LevelEntity.extend({
 
     onCollision: function() {
 
-
-        var lev = game.data.level[game.data.story_count][game.data.level_count]["level"][game.data.sub_l_count];
-        me.levelDirector.loadLevel(lev);
-        me.game.viewport.fadeOut(this.fade, this.duration);
-
+		if(game.data.playing==false){
+			var lev = game.data.level[game.data.story_count][game.data.level_count]["level"][game.data.sub_l_count];
+			me.levelDirector.loadLevel(lev);
+			me.game.viewport.fadeOut(this.fade, this.duration);
+		}
+		
+		return false;
 
 
     }
 
 });
+
+
 
 game.TrampEntity = me.Entity.extend({
     init: function(x, y, settings) {
@@ -385,6 +432,7 @@ game.TrampEntity = me.Entity.extend({
     }
 });
 
+
 game.PlayEntity = me.Entity.extend({
     init: function(x, y, settings) {
         this._super(me.LevelEntity, 'init', [x, y, settings]);
@@ -392,10 +440,11 @@ game.PlayEntity = me.Entity.extend({
     },
     onCollision: function() {
         if (game.data.level_count == 1) {
-			game.data.playing=true;
+			game.data.playing=true;		
             var story = game.data.stories[game.data.story_count - 1];
             me.audio.play(story, false, function() {
 				game.data.playing=false;
+				game.data.playing_num=1;
             });
         }
         me.game.world.removeChild(this);
