@@ -222,10 +222,10 @@
   </object>
  </objectgroup>
  <objectgroup name="player">
-  <object id="116" name="boy" x="34" y="513" width="30" height="31">
+  <object id="116" name="boy" x="34" y="513" width="32" height="31">
    <properties>
     <property name="framewidth" value="32"/>
-    <property name="image" value="Boy"/>
+    <property name="image" value="main_b_1"/>
    </properties>
   </object>
   <object id="135" name="coin1_1_1" x="256" y="513" width="29" height="26">

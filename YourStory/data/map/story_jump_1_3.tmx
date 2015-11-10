@@ -60,7 +60,7 @@
    <properties>
     <property name="frameheight" value="32"/>
     <property name="framewidth" value="32"/>
-    <property name="image" value="boy1"/>
+    <property name="image" value="main_b_1"/>
    </properties>
   </object>
  </objectgroup>

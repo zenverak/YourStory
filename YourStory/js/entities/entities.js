@@ -7,9 +7,10 @@ game.PlayerEntity = me.Entity.extend({
      * constructor
      */
     init: function(x, y, settings) {
-        // call the construct
+        settings.image='main_b_1';
         this._super(me.Entity, 'init', [x, y, settings]);
         this.body.setVelocity(5, 30);
+		
 
 
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -17,9 +18,12 @@ game.PlayerEntity = me.Entity.extend({
         this.alwaysUpdate = true;
 
         // define a basic walking animation (using all frames)
-        this.renderable.addAnimation("walk", [0, 1, 2, 3, 4, 5]);
+        this.renderable.addAnimation("walk_left", [0, 1, 2, 3, 4, 5]);
+		
+		this.renderable.addAnimation("walk_right", [6, 7, 8, 9, 10, 11]);
+		
         // define a standing animation (using the first frame)
-        this.renderable.addAnimation("stand", [0]);
+        this.renderable.addAnimation("stand", [3]);
         // set the standing animation as default
         this.renderable.setCurrentAnimation("stand");
 
@@ -39,8 +43,8 @@ game.PlayerEntity = me.Entity.extend({
             // update the entity velocity
             this.body.vel.x -= this.body.accel.x * me.timer.tick;
             // change to the walking animation
-            if (!this.renderable.isCurrentAnimation("walk")) {
-                this.renderable.setCurrentAnimation("walk");
+            if (!this.renderable.isCurrentAnimation("walk_left")){
+                this.renderable.setCurrentAnimation("walk_left");
             }
         } else if (me.input.isKeyPressed('right')) {
             // unflip the sprite
@@ -48,8 +52,8 @@ game.PlayerEntity = me.Entity.extend({
             // update the entity velocity
             this.body.vel.x += this.body.accel.x * me.timer.tick;
             // change to the walking animation
-            if (!this.renderable.isCurrentAnimation("walk")) {
-                this.renderable.setCurrentAnimation("walk");
+            if (!this.renderable.isCurrentAnimation("walk_right")) {
+                this.renderable.setCurrentAnimation("walk_right");
             }
 
         } else {

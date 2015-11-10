@@ -58,7 +58,7 @@
   <object id="2" name="boy" type="boy" x="32" y="514" width="32" height="32">
    <properties>
     <property name="framewidth" value="32"/>
-    <property name="image" value="Boy"/>
+    <property name="image" value="main_b_1"/>
    </properties>
   </object>
   <object id="55" name="adult" type="adult" x="225" y="495" width="32" height="47">
