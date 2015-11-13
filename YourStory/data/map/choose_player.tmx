@@ -18,8 +18,20 @@
   </data>
  </layer>
  <objectgroup name="collision">
-  <object id="1" name="charOne" type="one" x="99" y="225" width="28" height="32"/>
-  <object id="2" name="charTwo" type="two" x="95" y="287" width="32" height="32"/>
-  <object id="3" name="charThree" type="three" x="97" y="350" width="32" height="32"/>
+  <object id="1" name="charOne" type="one" x="99" y="225" width="28" height="32">
+   <properties>
+    <property name="choice" value="one"/>
+   </properties>
+  </object>
+  <object id="2" name="charTwo" type="two" x="95" y="287" width="32" height="32">
+   <properties>
+    <property name="choice" value="two"/>
+   </properties>
+  </object>
+  <object id="3" name="charThree" type="three" x="97" y="350" width="32" height="32">
+   <properties>
+    <property name="choice" value="three"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

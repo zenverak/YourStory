@@ -127,9 +127,12 @@ var game = {
 		me.pool.register("door",game.DoorEntity);
 		me.pool.register("play",game.PlayEntity);
 		me.pool.register("move2",game.LevelChangeEntity2);
-		me.pool.register("charOne",game.CharChoice);
-		me.pool.register("charTwo",game.CharChoice);
-		me.pool.register("charThree",game.CharChoice);
+		me.pool.register("charOne",game.CharOne);
+		me.pool.register("charTwo",game.CharTwo);
+		me.pool.register("charThree",game.CharThree);
+		//me.pool.register("charFour",game.CharFour);
+		//me.pool.register("charFive",game.CharFive);
+		//me.pool.register("charSix",game.CharSix);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");
