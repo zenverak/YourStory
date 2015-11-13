@@ -7,10 +7,10 @@ game.PlayerEntity = me.Entity.extend({
      * constructor
      */
     init: function(x, y, settings) {
-        settings.image='main_b_1';
+        settings.image = game.data.charChoice;
         this._super(me.Entity, 'init', [x, y, settings]);
         this.body.setVelocity(5, 30);
-		
+
 
 
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
@@ -18,10 +18,9 @@ game.PlayerEntity = me.Entity.extend({
         this.alwaysUpdate = true;
 
         // define a basic walking animation (using all frames)
-        this.renderable.addAnimation("walk_left", [0, 1, 2, 3, 4, 5]);
-		
-		this.renderable.addAnimation("walk_right", [6, 7, 8, 9, 10, 11]);
-		
+
+        this.renderable.addAnimation("walk", [0, 1, 2, 3, 4, 5]);
+
         // define a standing animation (using the first frame)
         this.renderable.addAnimation("stand", [3]);
         // set the standing animation as default
@@ -43,8 +42,9 @@ game.PlayerEntity = me.Entity.extend({
             // update the entity velocity
             this.body.vel.x -= this.body.accel.x * me.timer.tick;
             // change to the walking animation
-            if (!this.renderable.isCurrentAnimation("walk_left")){
-                this.renderable.setCurrentAnimation("walk_left");
+            if (!this.renderable.isCurrentAnimation("walk")) {
+                console.log("should be moving left");
+                this.renderable.setCurrentAnimation("walk");
             }
         } else if (me.input.isKeyPressed('right')) {
             // unflip the sprite
@@ -52,8 +52,9 @@ game.PlayerEntity = me.Entity.extend({
             // update the entity velocity
             this.body.vel.x += this.body.accel.x * me.timer.tick;
             // change to the walking animation
-            if (!this.renderable.isCurrentAnimation("walk_right")) {
-                this.renderable.setCurrentAnimation("walk_right");
+            if (!this.renderable.isCurrentAnimation("walk")) {
+                console.log("should be moving right");
+                this.renderable.setCurrentAnimation("walk");
             }
 
         } else {
@@ -85,6 +86,8 @@ game.PlayerEntity = me.Entity.extend({
      * colision handler
      * (called when colliding with other objects)
      */
+
+
     onCollision: function(response, other) {
         switch (other.body.collisionType) {
             case me.collision.types.WORLD_SHAPE:
@@ -305,8 +308,8 @@ game.EnemyEntity = me.Entity.extend({
      */
     onCollision: function(response, other) {
         if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
-            // res.y >0 means touched by something on the bottom
-            // which mean at top position for this one
+            //increment number of mess ups by one when they land on someone.
+            game.data.number_mess_ups++;
 
             return false;
 
@@ -371,11 +374,11 @@ game.LevelChangeEntity2 = me.LevelEntity.extend({
 
     onCollision: function() {
         //need to optimize this at some point.
-		//This is for the starting stage with no real intro.
-		if(game.data.playing==false && game.data.playing_num==1&&game.data.in_box==true){
-			var s_plus = this.settings.s_plus
+        //This is for the starting stage with no real intro.
+        if (game.data.playing == false && game.data.playing_num == 1 && game.data.in_box == true) {
+            var s_plus = this.settings.s_plus
             var sLen = game.data.level[game.data.story_count][game.data.level_count]["level"].length
-			game.data.playing_num=0;
+            game.data.playing_num = 0;
             if (game.data.story_count + s_plus <= game.data.story_nums) {
                 game.data.total_score += game.data.score;
                 game.data.in_box = false;
@@ -397,7 +400,7 @@ game.LevelChangeEntity2 = me.LevelEntity.extend({
 
             }
             return false;
-		}
+        }
 
         return false;
 
@@ -413,13 +416,13 @@ game.DoorEntity = me.LevelEntity.extend({
 
     onCollision: function() {
 
-		if(game.data.playing==false){
-			var lev = game.data.level[game.data.story_count][game.data.level_count]["level"][game.data.sub_l_count];
-			me.levelDirector.loadLevel(lev);
-			me.game.viewport.fadeOut(this.fade, this.duration);
-		}
-		
-		return false;
+        if (game.data.playing == false) {
+            var lev = game.data.level[game.data.story_count][game.data.level_count]["level"][game.data.sub_l_count];
+            me.levelDirector.loadLevel(lev);
+            me.game.viewport.fadeOut(this.fade, this.duration);
+        }
+
+        return false;
 
 
     }
@@ -444,11 +447,11 @@ game.PlayEntity = me.Entity.extend({
     },
     onCollision: function() {
         if (game.data.level_count == 1) {
-			game.data.playing=true;		
+            game.data.playing = true;
             var story = game.data.stories[game.data.story_count - 1];
             me.audio.play(story, false, function() {
-				game.data.playing=false;
-				game.data.playing_num=1;
+                game.data.playing = false;
+                game.data.playing_num = 1;
             });
         }
         me.game.world.removeChild(this);
@@ -463,5 +466,59 @@ game.BoxEntity = me.Entity.extend({
         this.settings = settings;
         this.body.collisionType = me.collision.types.ACTION_OBJECT;
 
+    }
+});
+
+game.CharChoice = me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this.settings = settings;
+		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
+
+
+    },
+	
+	loadLevel: function(){
+		        // reset the score
+        game.data.score = 0;
+		//load a level
+		var story=game.data.story_count;
+		var level=game.data.level_count;
+		var area=game.data.level[game.data.story_count][level]["intro"];
+		me.levelDirector.loadLevel(area);
+
+        // add our HUD to the game world
+        this.HUD = new game.HUD.Container();
+        me.game.world.addChild(this.HUD);
+		me.audio.playTrack("sweden");
+	},
+
+    onSelect: function(event) {
+        switch (event.type) {
+            case "one":
+                game.data.charChoice = "main_b_1";
+				this.loadLevel();
+                break;
+            case "two":
+                game.data.charChoice = "main_b_2";
+				this.loadLevel();
+                break;
+            case "three":
+                game.data.charChoice = "main_b_3";
+				this.loadLevel();
+                break;
+            case "four":
+                game.data.charChoice = "main_g_1";
+				this.loadLevel();
+                break;
+            case "five":
+                game.data.charChoice = "main_g_2";
+				this.loadLevel();
+                break;
+            case "six":
+                game.data.charChoice = "main_g_3";
+				this.loadLevel();
+                break;
+        }
     }
 });

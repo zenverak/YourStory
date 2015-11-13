@@ -19,6 +19,8 @@ var game = {
 		
 		number_mess_ups:0,
 		
+		charChoice:"",
+		
 		playing:false,
 		
 		playing_num:0,
@@ -26,6 +28,10 @@ var game = {
 		in_box: false,
 		
 		single: false,
+		
+		//This is the level used to chose what screen you will select characters fromCharCode
+		choiceScreen:"choose_player",
+		
 		
 		// this will contain the data structure for the levels. at the top is are the stories, 
 		//then the differententiated version of each story, then the altered versoin of each of those levels
@@ -49,6 +55,13 @@ var game = {
 				4: {"level":["story_jump_4_1","story_jump_4_2","story_jump_4_3","story_jump_4_4"],"intro":"room2"}
             }
         },
+		
+		// This object will contain the list of sprites.
+		sprites:{
+				kids:["boy1","boy2","boy3","boy4","girl1","girl2","girl3",""],
+		
+				adult:["woman1","woman2","woman3","woman3","woman4","woman5", ""]
+		},
 		kids:["boy1","boy2","boy3","boy4","girl1","girl2","girl3",""],
 		
 		adult:["woman1","woman2","woman3","woman3","woman4","woman5", ""],
@@ -62,6 +75,7 @@ var game = {
 
 
     },
+
 
 
 
@@ -113,12 +127,17 @@ var game = {
 		me.pool.register("door",game.DoorEntity);
 		me.pool.register("play",game.PlayEntity);
 		me.pool.register("move2",game.LevelChangeEntity2);
+		me.pool.register("charOne",game.CharChoice);
+		me.pool.register("charTwo",game.CharChoice);
+		me.pool.register("charThree",game.CharChoice);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.SPACE, "jump", true);
 		me.input.bindKey(me.input.KEY.X,"put");
+		
+		
 
         // Start the game.
         me.state.change(me.state.PLAY);
