@@ -474,6 +474,7 @@ game.CharChoice = me.Entity.extend({
         this._super(me.LevelEntity, 'init', [x, y, settings]);
         this.settings = settings;
 		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
+		me.Polygon.setShape(x,y,settings.points);
 
 
     },
