@@ -37,7 +37,13 @@
     <property name="image" value="b"/>
    </properties>
   </object>
-  <object id="245" name="move1" type="move1" x="4749" y="467" width="35" height="73"/>
+  <object id="245" name="move1" type="move1" x="4749" y="467" width="35" height="73">
+   <properties>
+    <property name="duration" value="10000"/>
+    <property name="fade" value="#000000"/>
+    <property name="s_plus" value="0"/>
+   </properties>
+  </object>
   <object id="260" name="tramp" type="tramp" x="558" y="479" width="68" height="25"/>
   <object id="263" name="tramp" type="tramp" x="3688" y="480" width="76" height="20"/>
  </objectgroup>
