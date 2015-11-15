@@ -18,8 +18,8 @@
  <tileset firstgid="4240" name="area01_level_tiles" tilewidth="32" tileheight="32" tilecount="140">
   <image source="../img/map/area01_level_tiles.png" width="640" height="241"/>
  </tileset>
- <tileset firstgid="4380" name="main_b_1" tilewidth="32" tileheight="32" tilecount="12">
-  <image source="../img/sprite/main_b_1.png" width="384" height="32"/>
+ <tileset firstgid="4380" name="main_b_1" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_b_1.png" width="192" height="32"/>
  </tileset>
  <layer name="background" width="150" height="20">
   <data encoding="base64">
