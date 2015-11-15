@@ -127,12 +127,20 @@ var game = {
 		me.pool.register("door",game.DoorEntity);
 		me.pool.register("play",game.PlayEntity);
 		me.pool.register("move2",game.LevelChangeEntity2);
+		
+		//These are the character choices
 		me.pool.register("charOne",game.CharOne);
 		me.pool.register("charTwo",game.CharTwo);
 		me.pool.register("charThree",game.CharThree);
-		//me.pool.register("charFour",game.CharFour);
-		//me.pool.register("charFive",game.CharFive);
-		//me.pool.register("charSix",game.CharSix);
+		me.pool.register("charFour",game.CharFour);
+		me.pool.register("charFive",game.CharFive);
+		me.pool.register("charSix",game.CharSix);
+		me.pool.register("charSeven",game.CharSeven);
+		me.pool.register("charEight",game.CharEight);
+		me.pool.register("charNine",game.CharNine);
+		me.pool.register("charTen",game.CharTen);
+		me.pool.register("charEleven",game.CharEleven);
+		me.pool.register("charTwelve",game.CharTwelve);
 
         // enable the keyboard
         me.input.bindKey(me.input.KEY.LEFT, "left");

@@ -33,7 +33,7 @@
    <properties>
     <property name="duration" value="250"/>
     <property name="fade" value="#000000"/>
-    <property name="s_plus" value="0"/>
+    <property name="s_plus" value="1"/>
    </properties>
   </object>
   <object id="5" name="box" type="box" x="4576" y="446" width="79" height="97">
@@ -42,7 +42,7 @@
     <property name="image" value="b"/>
    </properties>
   </object>
-  <object id="147" x="4166" y="479" width="85" height="20"/>
+  <object id="147" name="tramp" type="tramp" x="4166" y="479" width="85" height="20"/>
  </objectgroup>
  <layer name="foreground" width="150" height="20">
   <data encoding="base64">

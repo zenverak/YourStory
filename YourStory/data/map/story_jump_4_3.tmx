@@ -33,7 +33,7 @@
    <properties>
     <property name="duration" value="250"/>
     <property name="fade" value="#000000"/>
-    <property name="s_plus" value="0"/>
+    <property name="s_plus" value="1"/>
    </properties>
   </object>
   <object id="5" name="box" type="box" x="4576" y="446" width="79" height="97">

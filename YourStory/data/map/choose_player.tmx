@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" backgroundcolor="#55ffff" nextobjectid="4">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" backgroundcolor="#55ffff" nextobjectid="13">
  <tileset firstgid="1" name="main_b_1" tilewidth="32" tileheight="32" tilecount="6">
   <image source="../img/sprite/main_b_1.png" width="192" height="32"/>
  </tileset>
@@ -12,25 +12,98 @@
  <tileset firstgid="19" name="32x32_font" tilewidth="32" tileheight="32" tilecount="59">
   <image source="../img/font/32x32_font.png" width="1888" height="32"/>
  </tileset>
+ <tileset firstgid="78" name="main_b_4" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_b_4.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="84" name="main_b_5" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_b_5.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="90" name="main_b_6" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_b_6.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="96" name="main_g_1" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_g_1.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="102" name="main_g_2" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_g_2.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="108" name="main_g_3" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_g_3.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="114" name="main_g_4" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_g_4.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="120" name="main_g_5" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_g_5.png" width="192" height="32"/>
+ </tileset>
+ <tileset firstgid="126" name="main_g_6" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_g_6.png" width="192" height="32"/>
+ </tileset>
  <layer name="Tile Layer 1" width="20" height="20">
   <data encoding="base64">
-   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANgAAAD8AAAA8AAAANgAAAD4AAAAAAAAAAAAAAEIAAABBAAAAAAAAAEcAAAA7AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEMAAAA/AAAANAAAAEwAAAA4AAAARQAAAAAAAABMAAAAQgAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASgAAADwAAABGAAAAOwAAAAAAAABHAAAAQgAAAAAAAABIAAAARgAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANgAAAD8AAAA8AAAANgAAAD4AAAAAAAAAAAAAAEIAAABBAAAAAAAAAEcAAAA7AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEMAAAA/AAAANAAAAEwAAAA4AAAARQAAAAAAAABMAAAAQgAAAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASgAAADwAAABGAAAAOwAAAAAAAABHAAAAQgAAAAAAAABIAAAARgAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
   </data>
  </layer>
  <objectgroup name="collision">
-  <object id="1" name="charOne" type="one" x="99" y="225" width="28" height="32">
+  <object id="1" name="charOne" type="one" x="91" y="223" width="38" height="39">
    <properties>
     <property name="choice" value="one"/>
+    <property name="image" value="main_b_1"/>
    </properties>
   </object>
-  <object id="2" name="charTwo" type="two" x="95" y="287" width="32" height="32">
+  <object id="2" name="charTwo" type="two" x="93" y="285" width="36" height="38">
    <properties>
-    <property name="choice" value="two"/>
+    <property name="image" value="main_b_2"/>
    </properties>
   </object>
-  <object id="3" name="charThree" type="three" x="97" y="350" width="32" height="32">
+  <object id="3" name="charThree" type="three" x="89" y="350" width="40" height="36">
    <properties>
-    <property name="choice" value="three"/>
+    <property name="image" value="main_b_3"/>
+   </properties>
+  </object>
+  <object id="4" name="charFive" type="two" x="172" y="285" width="36" height="38">
+   <properties>
+    <property name="image" value="main_b_5"/>
+   </properties>
+  </object>
+  <object id="5" name="charFour" type="four" x="170" y="223" width="38" height="39">
+   <properties>
+    <property name="image" value="main_b_4"/>
+   </properties>
+  </object>
+  <object id="6" name="charSix" type="three" x="168" y="350" width="40" height="36">
+   <properties>
+    <property name="image" value="main_b_6"/>
+   </properties>
+  </object>
+  <object id="7" name="charTen" type="four" x="375" y="223" width="38" height="39">
+   <properties>
+    <property name="image" value="main_g_4"/>
+   </properties>
+  </object>
+  <object id="8" name="charTwelve" type="three" x="373" y="350" width="40" height="36">
+   <properties>
+    <property name="image" value="main_g_6"/>
+   </properties>
+  </object>
+  <object id="9" name="charEight" type="two" x="298" y="285" width="36" height="38">
+   <properties>
+    <property name="image" value="main_g_2"/>
+   </properties>
+  </object>
+  <object id="10" name="charEleven" type="two" x="377" y="285" width="36" height="38">
+   <properties>
+    <property name="image" value="main_g_5"/>
+   </properties>
+  </object>
+  <object id="11" name="charSeven" type="one" x="296" y="223" width="38" height="39">
+   <properties>
+    <property name="image" value="main_g_1"/>
+   </properties>
+  </object>
+  <object id="12" name="charNine" type="three" x="294" y="350" width="40" height="36">
+   <properties>
+    <property name="image" value="main_g_3"/>
    </properties>
   </object>
  </objectgroup>

@@ -9,7 +9,7 @@ game.PlayerEntity = me.Entity.extend({
     init: function(x, y, settings) {
         settings.image = game.data.charChoice;
         this._super(me.Entity, 'init', [x, y, settings]);
-        this.body.setVelocity(5, 30);
+        this.body.setVelocity(5, 35);
 
 
 
@@ -433,7 +433,7 @@ game.DoorEntity = me.LevelEntity.extend({
 
 game.TrampEntity = me.Entity.extend({
     init: function(x, y, settings) {
-        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this._super(me.Entity, 'init', [x, y, settings]);
         this.settings = settings;
         this.body.collisionType = me.collision.types.ACTION_OBJECT;
     }
@@ -442,7 +442,7 @@ game.TrampEntity = me.Entity.extend({
 
 game.PlayEntity = me.Entity.extend({
     init: function(x, y, settings) {
-        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this._super(me.Entity, 'init', [x, y, settings]);
         this.settings = settings;
     },
     onCollision: function() {
@@ -462,7 +462,7 @@ game.PlayEntity = me.Entity.extend({
 
 game.BoxEntity = me.Entity.extend({
     init: function(x, y, settings) {
-        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this._super(me.Entity, 'init', [x, y, settings]);
         this.settings = settings;
         this.body.collisionType = me.collision.types.ACTION_OBJECT;
 
@@ -472,10 +472,10 @@ game.BoxEntity = me.Entity.extend({
 
 game.CharOne=me.Entity.extend({
     init: function(x, y, settings) {
-        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this._super(me.Entity, 'init', [x, y, settings]);
         this.settings = settings;
 		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
-		me.Polygon.setShape(x,y,settings.points);
+		
 
 
     },
@@ -504,10 +504,10 @@ game.CharOne=me.Entity.extend({
 
 game.CharTwo=me.Entity.extend({
     init: function(x, y, settings) {
-        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this._super(me.Entity, 'init', [x, y, settings]);
         this.settings = settings;
 		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
-		me.Polygon.setShape(x,y,settings.points);
+	
 
 
     },
@@ -536,10 +536,10 @@ game.CharTwo=me.Entity.extend({
 
 game.CharThree=me.Entity.extend({
     init: function(x, y, settings) {
-        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this._super(me.Entity, 'init', [x, y, settings]);
         this.settings = settings;
 		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
-		me.Polygon.setShape(x,y,settings.points);
+		
 
 
     },
@@ -568,10 +568,106 @@ game.CharThree=me.Entity.extend({
 
 game.CharFour=me.Entity.extend({
     init: function(x, y, settings) {
-        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this._super(me.Entity, 'init', [x, y, settings]);
         this.settings = settings;
 		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
-		me.Polygon.setShape(x,y,settings.points);
+		
+
+
+    },
+	
+	loadLevel: function(){
+		        // reset the score
+        game.data.score = 0;
+		//load a level
+		var story=game.data.story_count;
+		var level=game.data.level_count;
+		var area=game.data.level[game.data.story_count][level]["intro"];
+		me.levelDirector.loadLevel(area);
+
+        // add our HUD to the game world
+        this.HUD = new game.HUD.Container();
+        me.game.world.addChild(this.HUD);
+		me.audio.playTrack("sweden");
+	},
+
+    onSelect: function(event) {
+		game.data.charChoice="main_b_4";
+		this.loadLevel();
+
+    }
+});
+
+game.CharFive=me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.Entity, 'init', [x, y, settings]);
+        this.settings = settings;
+		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
+		
+
+
+    },
+	
+	loadLevel: function(){
+		        // reset the score
+        game.data.score = 0;
+		//load a level
+		var story=game.data.story_count;
+		var level=game.data.level_count;
+		var area=game.data.level[game.data.story_count][level]["intro"];
+		me.levelDirector.loadLevel(area);
+
+        // add our HUD to the game world
+        this.HUD = new game.HUD.Container();
+        me.game.world.addChild(this.HUD);
+		me.audio.playTrack("sweden");
+	},
+
+    onSelect: function(event) {
+		game.data.charChoice="main_b_5";
+		this.loadLevel();
+
+    }
+});
+
+game.CharSix=me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.Entity, 'init', [x, y, settings]);
+        this.settings = settings;
+		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
+		
+
+
+    },
+	
+	loadLevel: function(){
+		        // reset the score
+        game.data.score = 0;
+		//load a level
+		var story=game.data.story_count;
+		var level=game.data.level_count;
+		var area=game.data.level[game.data.story_count][level]["intro"];
+		me.levelDirector.loadLevel(area);
+
+        // add our HUD to the game world
+        this.HUD = new game.HUD.Container();
+        me.game.world.addChild(this.HUD);
+		me.audio.playTrack("sweden");
+	},
+
+    onSelect: function(event) {
+		game.data.charChoice="main_b_6";
+		this.loadLevel();
+
+    }
+});
+
+game.CharSeven=me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.Entity, 'init', [x, y, settings]);
+        this.settings = settings;
+		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
+		
 
 
     },
@@ -598,12 +694,12 @@ game.CharFour=me.Entity.extend({
     }
 });
 
-game.CharFive=me.Entity.extend({
+game.CharEight=me.Entity.extend({
     init: function(x, y, settings) {
-        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this._super(me.Entity, 'init', [x, y, settings]);
         this.settings = settings;
 		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
-		me.Polygon.setShape(x,y,settings.points);
+		
 
 
     },
@@ -630,12 +726,12 @@ game.CharFive=me.Entity.extend({
     }
 });
 
-game.CharSix=me.Entity.extend({
+game.CharNine=me.Entity.extend({
     init: function(x, y, settings) {
-        this._super(me.LevelEntity, 'init', [x, y, settings]);
+        this._super(me.Entity, 'init', [x, y, settings]);
         this.settings = settings;
 		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
-		me.Polygon.setShape(x,y,settings.points);
+		
 
 
     },
@@ -657,6 +753,102 @@ game.CharSix=me.Entity.extend({
 
     onSelect: function(event) {
 		game.data.charChoice="main_g_3";
+		this.loadLevel();
+
+    }
+});
+
+game.CharTen=me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.Entity, 'init', [x, y, settings]);
+        this.settings = settings;
+		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
+		
+
+
+    },
+	
+	loadLevel: function(){
+		        // reset the score
+        game.data.score = 0;
+		//load a level
+		var story=game.data.story_count;
+		var level=game.data.level_count;
+		var area=game.data.level[game.data.story_count][level]["intro"];
+		me.levelDirector.loadLevel(area);
+
+        // add our HUD to the game world
+        this.HUD = new game.HUD.Container();
+        me.game.world.addChild(this.HUD);
+		me.audio.playTrack("sweden");
+	},
+
+    onSelect: function(event) {
+		game.data.charChoice="main_g_4";
+		this.loadLevel();
+
+    }
+});
+
+game.CharEleven=me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.Entity, 'init', [x, y, settings]);
+        this.settings = settings;
+		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
+		
+
+
+    },
+	
+	loadLevel: function(){
+		        // reset the score
+        game.data.score = 0;
+		//load a level
+		var story=game.data.story_count;
+		var level=game.data.level_count;
+		var area=game.data.level[game.data.story_count][level]["intro"];
+		me.levelDirector.loadLevel(area);
+
+        // add our HUD to the game world
+        this.HUD = new game.HUD.Container();
+        me.game.world.addChild(this.HUD);
+		me.audio.playTrack("sweden");
+	},
+
+    onSelect: function(event) {
+		game.data.charChoice="main_g_5";
+		this.loadLevel();
+
+    }
+});
+
+game.CharTwelve=me.Entity.extend({
+    init: function(x, y, settings) {
+        this._super(me.Entity, 'init', [x, y, settings]);
+        this.settings = settings;
+		me.input.registerPointerEvent('pointerdown', this, this.onSelect.bind(this));
+		
+
+
+    },
+	
+	loadLevel: function(){
+		        // reset the score
+        game.data.score = 0;
+		//load a level
+		var story=game.data.story_count;
+		var level=game.data.level_count;
+		var area=game.data.level[game.data.story_count][level]["intro"];
+		me.levelDirector.loadLevel(area);
+
+        // add our HUD to the game world
+        this.HUD = new game.HUD.Container();
+        me.game.world.addChild(this.HUD);
+		me.audio.playTrack("sweden");
+	},
+
+    onSelect: function(event) {
+		game.data.charChoice="main_g_6";
 		this.loadLevel();
 
     }
