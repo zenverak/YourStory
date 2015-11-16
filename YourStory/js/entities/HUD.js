@@ -76,3 +76,7 @@ game.HUD.ScoreItem = me.Renderable.extend({
     }
 
 });
+
+game.HUD.Credits=me.Renderal.extend({
+	
+});
