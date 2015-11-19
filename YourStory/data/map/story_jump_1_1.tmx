@@ -25,8 +25,8 @@
  <tileset firstgid="4372" name="universal-lpc-sprite_male_01_walk-3frame" tilewidth="64" tileheight="64" tilecount="8">
   <image source="../img/sprite/universal-lpc-sprite_male_01_walk-3frame.png" width="144" height="256"/>
  </tileset>
- <tileset firstgid="4380" name="main_b_1" tilewidth="32" tileheight="32" tilecount="12">
-  <image source="../img/sprite/main_b_1.png" width="384" height="32"/>
+ <tileset firstgid="4380" name="main_b_1" tilewidth="32" tileheight="32" tilecount="6">
+  <image source="../img/sprite/main_b_1.png" width="192" height="32"/>
  </tileset>
  <layer name="background" width="150" height="20">
   <data encoding="base64">
@@ -120,7 +120,7 @@
     <property name="image" value="boy1"/>
    </properties>
   </object>
-  <object id="226" name="boys" x="1626" y="412" width="32" height="32">
+  <object id="226" name="boys" x="1615" y="406" width="32" height="32">
    <properties>
     <property name="frameheight" value="32"/>
     <property name="framewidth" value="32"/>
@@ -135,13 +135,6 @@
    </properties>
   </object>
   <object id="228" name="boys" x="1624" y="160" width="32" height="32">
-   <properties>
-    <property name="frameheight" value="32"/>
-    <property name="framewidth" value="32"/>
-    <property name="image" value="boy1"/>
-   </properties>
-  </object>
-  <object id="229" name="boys" x="1822" y="377" width="32" height="32">
    <properties>
     <property name="frameheight" value="32"/>
     <property name="framewidth" value="32"/>
